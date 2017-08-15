@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 
-@Component(value = "user")
+//@Component(value = "user")
 public class User {
 
 

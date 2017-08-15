@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 
 //@Resource(name = "food")
-@Component(value = "food")
+//@Component(value = "food")
 public class Food {
 
     int foodId;
@@ -27,7 +27,7 @@ public class Food {
         return foodName;
     }
 
-    @Autowired
+    //@Autowired
     public void setFoodName(String foodName) {
         this.foodName = foodName;
     }

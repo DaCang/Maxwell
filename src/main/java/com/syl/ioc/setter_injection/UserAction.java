@@ -46,10 +46,9 @@ public class UserAction   extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("+++++++++++++++++++++++++++++++++++++++++");
         //user =  new User();
-        String userName = (String)request.getParameter("name");
-        String foodName = (String)request.getParameter("food");
+        String userName = request.getParameter("name");
+        String foodName = request.getParameter("food");
         user.setUserName(userName);
         food.setFoodName(foodName);
 
@@ -93,11 +92,9 @@ public class UserAction   extends HttpServlet {
         //r.getPropertie(sc);
 
         super.init(config);
-        WebApplicationContext ctx  = WebApplicationContextUtils.getRequiredWebApplicationContext(config.getServletContext());
-        user=(User) ctx.getBean("user");
-
-
-        //food=(Food) applicationContext.getBean("food");
+        applicationContext  = WebApplicationContextUtils.getRequiredWebApplicationContext(config.getServletContext());
+        user=(User) applicationContext.getBean("user");
+        food=(Food) applicationContext.getBean("food");
 
     }
 
