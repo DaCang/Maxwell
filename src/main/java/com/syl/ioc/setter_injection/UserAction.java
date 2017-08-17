@@ -1,5 +1,6 @@
 package com.syl.ioc.setter_injection;
 
+import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.web.context.WebApplicationContext;
@@ -47,13 +48,13 @@ public class UserAction   extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //user =  new User();
-        String userName = request.getParameter("name");
-        String foodName = request.getParameter("food");
-        user.setUserName(userName);
-        food.setFoodName(foodName);
+            String userName = request.getParameter("name");
+            String foodName = request.getParameter("food");
+            user.setUserName(userName);
+            food.setFoodName(foodName);
 
-        user.eating();
-        food.eaten();
+            user.eating();
+            food.eaten();
 
 
     }
@@ -91,10 +92,21 @@ public class UserAction   extends HttpServlet {
         //ServletContext sc=this.getServletContext();
         //r.getPropertie(sc);
 
-        super.init(config);
-        applicationContext  = WebApplicationContextUtils.getRequiredWebApplicationContext(config.getServletContext());
-        user=(User) applicationContext.getBean("user");
-        food=(Food) applicationContext.getBean("food");
+
+        try {
+            super.init(config);
+            applicationContext  = WebApplicationContextUtils.getRequiredWebApplicationContext(config.getServletContext());
+            user=(User) applicationContext.getBean("user");
+            food=(Food) applicationContext.getBean("food");
+        } catch (ServletException e1) {
+            e1.printStackTrace();
+        } catch (IllegalStateException e2) {
+            e2.printStackTrace();
+        } catch (BeansException e3) {
+            e3.printStackTrace();
+        }catch (NullPointerException e4){
+            e4.printStackTrace();
+        }
 
     }
 
