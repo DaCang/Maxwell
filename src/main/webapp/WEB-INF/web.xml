@@ -10,12 +10,13 @@
     <!--用于设置context的参数,如果不设置contextConfigLocation则默认的spring配置文件applicationContext.xml放在WEB-INF目录下-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:spring.xml</param-value>
+
+        <param-value>classpath:bean*.xml</param-value>
     </context-param>
 
     <servlet>
         <servlet-name>userAction</servlet-name>
-        <servlet-class>com.syl.ioc.setter_injection.UserAction</servlet-class>
+        <servlet-class>com.syl.demo.action.UserAction</servlet-class>
     </servlet>
 
     <servlet-mapping>

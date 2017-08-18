@@ -51,7 +51,7 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-2">
             <div class="login-panel panel panel-default">
-            <form class="form-signin">
+            <form class="form-signin" action="/userAction.do" method="get">
                 <div class="panel-heading">
                     <h3 class="panel-title">请登录</h3>
                 </div>
