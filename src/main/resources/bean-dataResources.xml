@@ -20,8 +20,8 @@
 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
       destroy-method="close"
       p:driverClassName="com.mysql.jdbc.Driver"
-      p:url="jdbc:mysql://localhost:3306/syl"
-      p:username="syl"
+      p:url="jdbc:mysql://localhost:3306/demo_02"
+      p:username="syl_demo_02"
       p:password="song"
 />
 

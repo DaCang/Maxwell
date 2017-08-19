@@ -8,17 +8,17 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.syl.demo.pojo.User" %>
-<%
+<%--<%
     User user =(User) request.getAttribute("user");
     System.out.println(user.toString());
-%>
+%>--%>
 <html>
 <head>
     <title>loginSuccess</title>
 </head>
 <body>
 
-<h1>loginSuccess,<%=user.getUserName()%>!</h1>
+<h1>loginSuccess<%--,<%=user.getUserName()%>--%>!</h1>
 
 
 </body>

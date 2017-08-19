@@ -63,6 +63,10 @@ public class UserAction extends HttpServlet {
             System.out.println(userName+" is exist!!");
             request.setAttribute("user",user);
             response.sendRedirect("/login/loginSuccess.jsp");
+        }else{
+            System.out.println(userName+" is not  exist!!");
+            //response.setStatus(404);
+            response.sendRedirect("/login/");
         }
            // food.eaten();
 
