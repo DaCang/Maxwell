@@ -53,7 +53,7 @@ public class UserDaoImp implements UserDao {
 
             }
 
-        }, new ResultSetExtractor() {
+            }, new ResultSetExtractor() {
 
             public Object extractData (ResultSet rs) throws SQLException, DataAccessException {
 
