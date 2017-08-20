@@ -55,21 +55,28 @@ public class UserAction extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //user =  new User();
-        String userName = request.getParameter("name");
+        String user_id = request.getParameter("user_id");
         String passWord = request.getParameter("password");
-        user.setUserName(userName);
+        user.setUserId(user_id);
         user.setPassWord(passWord);
         if(userDao.findUser(user)){
-            System.out.println(userName+" is exist!!");
-            request.setAttribute("user",user);
-            response.sendRedirect("/login/loginSuccess.jsp");
+            System.out.println(user_id+" is exist!!");
+            user=userDao.getUserInfo();
+            //request.setAttribute("user",user);
+            request.getSession(false).setAttribute("user",
+                    user);
+            request.getRequestDispatcher("/login/loginSuccess.jsp").forward(request, response);
+            //response.sendRedirect("/login/loginSuccess.jsp");
         }else{
-            System.out.println(userName+" is not  exist!!");
+            System.out.println(user_id+" is not  exist!!");
             //response.setStatus(404);
             response.sendRedirect("/login/");
         }
-           // food.eaten();
-
+        response.setContentType("text/plain;charset=UTF-8");
+        response.setContentType("text/plain; charset=gbk");
+        response.getWriter().print(true);
+        response.getWriter().flush();
+        response.getWriter().close();
 
     }
 

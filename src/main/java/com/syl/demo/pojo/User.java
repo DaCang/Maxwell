@@ -6,12 +6,14 @@ import com.syl.ioc.setter_injection.Food;
 public class User {
 
 
-    int userId;
+    String userId;
 
 
     String userName;
 
     String passWord;
+
+    String status;
 
     Role role;
 
@@ -20,15 +22,21 @@ public class User {
     }
 
 
-
-    public int getUserId () {
+    public String getUserId () {
         return userId;
     }
 
-    public void setUserId (int userId) {
+    public void setUserId (String userId) {
         this.userId = userId;
     }
 
+    public String getStatus () {
+        return status;
+    }
+
+    public void setStatus (String status) {
+        this.status = status;
+    }
 
     public String getUserName () {
         return userName;

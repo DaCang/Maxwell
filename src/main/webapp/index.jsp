@@ -56,8 +56,8 @@
                     <h3 class="panel-title">请登录</h3>
                 </div>
                 <div class="form-group">
-                    <label for="username" class="sr-only">用户名</label>
-                    <input type="text" id="username"  name="name" class="form-control" placeholder="用户名" required autofocus>
+                    <label for="user_id" class="sr-only">用户名</label>
+                    <input type="text" id="user_id"  name="user_id" class="form-control" placeholder="用户名" required autofocus>
                 </div>
                 <div class="form-group">
                     <label for="inputPassword" class="sr-only">密码</label>

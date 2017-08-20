@@ -8,6 +8,7 @@ public interface UserDao {
 
     Boolean findUser(User user);
 
+    User getUserInfo();
 
 
 }
