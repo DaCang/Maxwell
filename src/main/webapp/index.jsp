@@ -27,6 +27,8 @@
     <!-- Custom CSS -->
     <link href="${pageContext.request.contextPath}/dist/css/sb-admin-2.css" rel="stylesheet">
 
+    <link href="${pageContext.request.contextPath}/js/jquery.min.js" >
+
     <!-- Custom Fonts -->
     <link href="${pageContext.request.contextPath}/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -51,13 +53,13 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-2">
             <div class="login-panel panel panel-default">
-            <form class="form-signin">
+            <form class="form-signin" action="/userAction.do" method="get">
                 <div class="panel-heading">
                     <h3 class="panel-title">请登录</h3>
                 </div>
                 <div class="form-group">
-                    <label for="username" class="sr-only">用户名</label>
-                    <input type="text" id="username"  name="name" class="form-control" placeholder="用户名" required autofocus>
+                    <label for="user_id" class="sr-only">用户名</label>
+                    <input type="text" id="user_id"  name="user_id" class="form-control" placeholder="用户名" required autofocus>
                 </div>
                 <div class="form-group">
                     <label for="inputPassword" class="sr-only">密码</label>
@@ -69,6 +71,7 @@
                         记住我
                     </label>
                 </div>
+                <p id="here" onclick="c()" >Here!</p>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
             </form>
             </div>
@@ -77,3 +80,10 @@
 </div>
 </body>
 </html>
+<script type="text/javascript">
+    function c(){
+
+            alert(111)
+            $("#here").attr('title', '/userAction.do' + Math.floor(Math.random()*100) ).fadeIn();
+    }
+</script>
