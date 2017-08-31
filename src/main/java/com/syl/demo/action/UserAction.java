@@ -20,14 +20,9 @@ import java.io.IOException;
 
 public class UserAction extends HttpServlet {
 
-    //@Resource (name = "user")
+
     UserDaoImp userDao ;
 
-    User user ;
-
-    Role role;
-
-    //Food food;
 
     /**
      *
@@ -57,9 +52,10 @@ public class UserAction extends HttpServlet {
         //user =  new User();
         String user_id = request.getParameter("user_id");
         String passWord = request.getParameter("password");
+        User user=userDao.getUser();
         user.setUserId(user_id);
         user.setPassWord(passWord);
-        if(userDao.findUser(user)){
+        if(userDao.findUser()){
             System.out.println(user_id+" is exist!!");
             user=userDao.getUserInfo();
             //request.setAttribute("user",user);
@@ -68,15 +64,19 @@ public class UserAction extends HttpServlet {
             request.getRequestDispatcher("/login/loginSuccess.jsp").forward(request, response);
             //response.sendRedirect("/login/loginSuccess.jsp");
         }else{
-            System.out.println(user_id+" is not  exist!!");
-            //response.setStatus(404);
-            response.sendRedirect("/login/");
+            String msg = user_id+" is not  exist!!";
+            System.out.println(msg);
+            //response.setStatus(550);
+            request.getSession(false).setAttribute("msg",
+                    msg);
+            response.sendRedirect("/error/userNotExist.jsp");
+
         }
-        response.setContentType("text/plain;charset=UTF-8");
+        /*response.setContentType("text/plain;charset=UTF-8");
         response.setContentType("text/plain; charset=gbk");
         response.getWriter().print(true);
         response.getWriter().flush();
-        response.getWriter().close();
+        response.getWriter().close();*/
 
     }
 
@@ -92,6 +92,8 @@ public class UserAction extends HttpServlet {
      */
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        System.out.println("--------");
 
 
 
@@ -115,8 +117,8 @@ public class UserAction extends HttpServlet {
 
 
         super.init(config);
-        userDao=(UserDaoImp)SpringContextUtil.getBean("userDaoImp");
-        user=(User)SpringContextUtil.getBean("user");
+       userDao=(UserDaoImp)SpringContextUtil.getBean("userDaoImp");
+       //user=(User)SpringContextUtil.getBean("user");
         //role=(Role) applicationContext.getBean("role");
 
     }

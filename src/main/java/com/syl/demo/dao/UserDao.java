@@ -6,7 +6,7 @@ import com.syl.demo.pojo.User;
 public interface UserDao {
 
 
-    Boolean findUser(User user);
+    Boolean findUser();
 
     User getUserInfo();
 

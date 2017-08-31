@@ -27,6 +27,8 @@
     <!-- Custom CSS -->
     <link href="${pageContext.request.contextPath}/dist/css/sb-admin-2.css" rel="stylesheet">
 
+    <link href="${pageContext.request.contextPath}/js/jquery.min.js" >
+
     <!-- Custom Fonts -->
     <link href="${pageContext.request.contextPath}/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -69,6 +71,7 @@
                         记住我
                     </label>
                 </div>
+                <p id="here" onclick="c()" >Here!</p>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
             </form>
             </div>
@@ -77,3 +80,10 @@
 </div>
 </body>
 </html>
+<script type="text/javascript">
+    function c(){
+
+            alert(111)
+            $("#here").attr('title', '/userAction.do' + Math.floor(Math.random()*100) ).fadeIn();
+    }
+</script>

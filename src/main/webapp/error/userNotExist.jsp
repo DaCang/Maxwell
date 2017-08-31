@@ -6,7 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isErrorPage="true" %>
-
+<%
+    String  msg = (String) request.getSession().getAttribute("msg");
+%>
 <html>
 <style type="text/css">
     body
@@ -19,7 +21,7 @@
     <title>Error Page For Examples</title>
 </head>
 <body bgcolor="white" alink="#f5f5dc" >
-    <h1 align="center" style="color:red;">500	Internal Server Error</h1>
+    <h1 align="center" style="color:red;"><%=msg%></h1>
     <p title="500"  align="right" style="width: 100%; ">
         <font size="10px"><strong>please try <a href='/index.jsp' title="index.jsp">again</a>.</strong></font>
     </p>

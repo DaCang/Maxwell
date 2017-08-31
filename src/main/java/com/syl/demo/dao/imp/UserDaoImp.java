@@ -3,6 +3,7 @@ package com.syl.demo.dao.imp;
 import com.syl.demo.action.SpringContextUtil;
 import com.syl.demo.dao.UserDao;
 import com.syl.demo.pojo.User;
+import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementSetter;
@@ -18,24 +19,28 @@ import java.util.List;
 public class UserDaoImp implements UserDao {
 
 
+    static Logger logger = Logger.getLogger(UserDaoImp.class.getName());
     User user;
 
     private JdbcTemplate jdbcTemplate;
 
 
     @Override
-    public Boolean findUser (User u) {
-        jdbcTemplate = (JdbcTemplate) SpringContextUtil.getBean("jdbcTemplate");
+    public Boolean findUser () {
+        //jdbcTemplate = (JdbcTemplate) SpringContextUtil.getBean("jdbcTemplate");
+        //jdbcTemplate = this.getJdbcTemplate();
         String query_count_sql = "SELECT count(*) FROM user " +
-                " where user_id='" + u.getUserId() + "' " +
-                " and password='" + u.getPassWord() + "'  " +
+                " where user_id='" + user.getUserId() + "' " +
+                " and password='" + user.getPassWord() + "'  " +
                 " AND  status = '0' ";
 
         int count = jdbcTemplate.queryForInt(query_count_sql);
         if (count != 1) {
             return false;
         }
-        user=u;
+        //user=u;
+        logger.debug(user.toString());
+       // System.out.println("--------->"+user.toString());
         //System.out.println(u.getUserName() + " queryForInt :" + count);
         return true;
     }
@@ -74,6 +79,27 @@ public class UserDaoImp implements UserDao {
         return user;
 
 
+    }
+
+    public User getUser () {
+        return user;
+    }
+
+    public void setUser (User user) {
+        this.user = user;
+    }
+
+    public JdbcTemplate getJdbcTemplate () {
+        return jdbcTemplate;
+    }
+
+    public void setJdbcTemplate (JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+    public static void main (String[] args) {
+        String version= System.getProperty("java.version");
+        System.out.println(version);
     }
 
 }
