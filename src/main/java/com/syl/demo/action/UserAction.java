@@ -2,9 +2,12 @@ package com.syl.demo.action;
 
 
 import com.syl.demo.dao.UserDao;
+import com.syl.demo.dao.imp.DeptDaoImp;
 import com.syl.demo.dao.imp.UserDaoImp;
+import com.syl.demo.pojo.Dept;
 import com.syl.demo.pojo.Role;
 import com.syl.demo.pojo.User;
+import org.apache.log4j.Logger;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
@@ -21,7 +24,12 @@ import java.io.IOException;
 public class UserAction extends HttpServlet {
 
 
+    protected Logger logger = Logger.getLogger(UserAction.class);
+
+
     UserDaoImp userDao ;
+
+    DeptDaoImp  deptDao;
 
 
     /**
@@ -53,14 +61,19 @@ public class UserAction extends HttpServlet {
         String user_id = request.getParameter("user_id");
         String passWord = request.getParameter("password");
         User user=userDao.getUser();
+        Dept dept=deptDao.getDept();
         user.setUserId(user_id);
         user.setPassWord(passWord);
         if(userDao.findUser()){
-            System.out.println(user_id+" is exist!!");
+            //System.out.println(user_id+" is exist!!");
+            logger.info(user_id+" is exist!!");
             user=userDao.getUserInfo();
+            dept=deptDao.getDeptInfo(user.getDeptId());
             //request.setAttribute("user",user);
             request.getSession(false).setAttribute("user",
                     user);
+            request.getSession(false).setAttribute("dept",
+                    dept);
             request.getRequestDispatcher("/login/loginSuccess.jsp").forward(request, response);
             //response.sendRedirect("/login/loginSuccess.jsp");
         }else{
@@ -118,6 +131,7 @@ public class UserAction extends HttpServlet {
 
         super.init(config);
        userDao=(UserDaoImp)SpringContextUtil.getBean("userDaoImp");
+       deptDao=(DeptDaoImp) SpringContextUtil.getBean("deptDaoImp");
        //user=(User)SpringContextUtil.getBean("user");
         //role=(Role) applicationContext.getBean("role");
 

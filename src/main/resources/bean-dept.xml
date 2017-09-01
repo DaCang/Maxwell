@@ -4,5 +4,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd"
 >
-    <bean id="app" class="com.syl.demo.action.SpringContextUtil"></bean>
+<bean id="deptDaoImp" class="com.syl.demo.dao.imp.DeptDaoImp" autowire="byName">
+
+</bean>
+    <bean id="dept" class="com.syl.demo.pojo.Dept"></bean>
+
 </beans>

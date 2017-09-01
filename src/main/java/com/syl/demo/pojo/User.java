@@ -17,6 +17,8 @@ public class User {
 
     String roleId;
 
+    String deptId;
+
 
     public User () {
     }
@@ -63,14 +65,12 @@ public class User {
         this.roleId = roleId;
     }
 
-    @Override
-    public String toString () {
-        return "User{" +
-                "userId='" + userId + '\'' +
-                ", userName='" + userName + '\'' +
-                ", passWord='" + passWord + '\'' +
-                ", status='" + status + '\'' +
-                ", role=" + roleId +
-                '}';
+
+    public String getDeptId () {
+        return deptId;
+    }
+
+    public void setDeptId (String deptId) {
+        this.deptId = deptId;
     }
 }

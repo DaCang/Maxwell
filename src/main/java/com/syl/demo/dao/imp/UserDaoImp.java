@@ -67,6 +67,7 @@ public class UserDaoImp implements UserDao {
                     user.setUserName(rs.getString("user_name"));
                     user.setPassWord(rs.getString("password"));
                     user.setRoleId(rs.getString("role_ids"));
+                    user.setDeptId(rs.getString("dept_id"));
 
                 }
                 return user;

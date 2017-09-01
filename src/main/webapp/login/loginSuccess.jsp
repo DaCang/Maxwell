@@ -8,17 +8,18 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.syl.demo.pojo.User" %>
+<%@ page import="com.syl.demo.pojo.Dept" %>
 <%
     User user = (User) request.getSession().getAttribute("user");
+    Dept dept = (Dept) request.getSession().getAttribute("dept");
 %>
 <html>
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="/jquery/jquery-ui.css">
+<script src="/jquery/jquery.js"></script>
+<script src="/jquery/jquery-ui.js"></script>
 <script>
     $( function() {
         $( "#tabs" ).tabs();
@@ -31,11 +32,11 @@
         background: url('/welcome.jpg')fixed center no-repeat;
         background-size:100% 100%;
     }
-    div#users-contain { width: 350px; margin: 20px 0; }
-    div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
-    div#users-contain table th { color: #32a5c4;background-color: #b2dba1;
+    div#users-info ,div#dept-info { width: 350px; margin: 20px 0; }
+    div#users-info table ,div#dept-info table{ margin: 1em 0; border-collapse: collapse; width: 100%; }
+    div#users-info table th  ,div#dept-info table th { color: #32a5c4;background-color: #b2dba1;
     }
-    div#users-contain table td, div#users-contain table th { border: 1px solid #ded6ee; padding: .6em 10px; text-align: left; }
+    div#users-info table td ,div#dept-info table td, div#dept-info table th, div#users-info table th { border: 1px solid #ded6ee; padding: .6em 10px; text-align: left; }
 
 </style>
 <head>
@@ -58,7 +59,7 @@
         <li><a href="#tabs-3">通知</a></li>
     </ul>
     <div id="tabs-1">
-        <div id="users-contain" class="ui-widget">
+        <div id="users-info" class="ui-widget">
             <table id="users" class="ui-widget ui-widget-content">
                 <thead>
                     <tr class="ui-widget-header ">
@@ -72,14 +73,31 @@
                     <td><%=user.getUserId()%></td>
                     <td><%=user.getUserName()%></td>
                     <td><%=user.getPassWord()%></td>
-                    <td><%=user.getRoleId()%></td>
+                    <td><%=user.getRoleId()!=null?user.getRoleId():""%></td>
                 </tr>
                 </tbody>
             </table>
         </div>
     </div>
     <div id="tabs-2">
-        <p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
+        <div id="dept-info" class="ui-widget">
+            <table id="dept" class="ui-widget ui-widget-content">
+                <thead>
+                <tr class="ui-widget-header ">
+                    <th>部门ID</th>
+                    <th>部门名称</th>
+                    <th>上级部门</th>
+                </tr>
+                </thead>
+                <tbody>
+                <td><%=dept.getDeptId()%></td>
+                <td><%=dept.getDeptName()%></td>
+                <td><%=dept.getDeptUp()!=null?dept.getDeptUp():""%></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
     </div>
     <div id="tabs-3">
         <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
