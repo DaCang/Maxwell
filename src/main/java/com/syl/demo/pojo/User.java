@@ -15,7 +15,7 @@ public class User {
 
     String status;
 
-    Role role;
+    String roleId;
 
 
     public User () {
@@ -55,14 +55,13 @@ public class User {
         this.passWord = passWord;
     }
 
-    public Role getRole () {
-        return role;
+    public String getRoleId () {
+        return roleId;
     }
 
-    public void setRole (Role role) {
-        this.role = role;
+    public void setRoleId (String roleId) {
+        this.roleId = roleId;
     }
-
 
     @Override
     public String toString () {
@@ -71,7 +70,7 @@ public class User {
                 ", userName='" + userName + '\'' +
                 ", passWord='" + passWord + '\'' +
                 ", status='" + status + '\'' +
-                ", role=" + role +
+                ", role=" + roleId +
                 '}';
     }
 }
