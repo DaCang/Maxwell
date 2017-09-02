@@ -91,9 +91,6 @@ public class UserDaoImp implements UserDao {
         this.user = user;
     }
 
-    public JdbcTemplate getJdbcTemplate () {
-        return jdbcTemplate;
-    }
 
     public void setJdbcTemplate (JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;

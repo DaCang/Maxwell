@@ -21,9 +21,27 @@
 <script src="/jquery/jquery.js"></script>
 <script src="/jquery/jquery-ui.js"></script>
 <script>
-    $( function() {
-        $( "#tabs" ).tabs();
-    } );
+    $(function() {
+        $( "#tabs" ).tabs({
+            cache:false,        //是否缓存远程tab内容，默认为false
+            event:"mouseover",      //切换条件，也可以设为mouseover，hover
+            collapsible:true,   //再次点击，可折叠选项卡
+            collapsible:true,   //设置为true时将设置一个选中的tab再此被选中时执行反选操作
+            fx:{ opacity: 'toggle'},    //在隐藏或者显示面板的时候开启动画
+            selected:0,         //从0开始的序列值,设置第几个tab将在初始化时被选中. 设置为-1则不选中所有tab.
+            beforeLoad:function(event,ui){
+                //当远程加载失败时加载的函数
+                ui.jqXHR.error(function(){
+                    ui.panel.html("暂时不能加载内容...");
+                });
+            },
+            //这个事件在点击一个tab的时候触发
+            select:function(event,ui){
+
+                alert(111);
+            }
+        });
+    });
 </script>
 
 <style type="text/css">
@@ -46,8 +64,8 @@
 
 <div >
 <form >
-    <h2 class="form-signin-heading">
-        <font size="10px">欢迎,<strong><%=user.getUserName()%></strong>!</font>
+    <h2 class="ui-corner-right">
+        <p>欢迎</p><strong><%=user.getUserName()%>(<%=dept.getDeptName()%>)</strong>!
     </h2>
 </form>
 
@@ -56,7 +74,7 @@
     <ul>
         <li><a href="#tabs-1">个人信息</a></li>
         <li><a href="#tabs-2">部门信息</a></li>
-        <li><a href="#tabs-3">通知</a></li>
+        <li><a href="notice/notice.html">通知</a></li>
     </ul>
     <div id="tabs-1">
         <div id="users-info" class="ui-widget">
@@ -99,10 +117,10 @@
         </div>
 
     </div>
-    <div id="tabs-3">
+    <%--<div id="tabs-3">
         <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
         <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
-    </div>
+    </div>--%>
 </div>
 </body>
 </html>

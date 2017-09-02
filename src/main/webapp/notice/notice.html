@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/jquery/jquery-ui.css">
+<script src="/jquery/jquery.js"></script>
+<script src="/jquery/jquery-ui.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        $(function() {
+
+            text();
+            var str="hello";
+            var str1="hello 222";
+            $("#accordion").append("<h3>notice 1</h3>" +
+                                "<div><p>" +str+
+                                 "</p></div>");
+            $("#accordion").append("<h3>notice 2</h3>" +
+                                "<div><p>" +str1+
+                                 "</p></div>");
+            $( "#accordion" ).accordion(
+                {
+                    collapsible: true,
+                    heightStyle: "content"
+                }
+
+            );
+            $.getJSON("notice/userinfo.json",function(data){
+                var accordion = $("#accordion")
+                var accordionHtml = "";//存储数据的变量
+                accordion.empty();//清空内容
+                $.each(data,function(infoIndex,info){
+                    accordionHtml += "<h3>："+info["name"]+"<h3>";
+                    accordionHtml += "性别："+info["sex"]+"<br>";
+                    accordionHtml += "邮箱："+info["email"]+"<br>";
+                    accordionHtml += "<hr>"
+                })
+                accordion.html(strHtml);//显示处理后的数据
+            })
+
+        });
+        function text(){
+            var json = {"options":"[{\'text\':\'王家湾\',\'value\':\'9\'}," +
+            "{\'text\':\'李家湾\',\'value\':\'10\'}," +
+            "{\'text\':\'邵家湾\',\'value\':\'13\'}]"};
+            json = eval(json.options)
+            for(var i=0; i<json.length; i++)
+            {
+                alert(json[i].text+" " + json[i].value)
+            }
+        }
+    </script>
+</head>
+<body>
+<h1>NOTICE </h1>
+<div id="accordion">
+</div>
+<div id="jsonTip">
+</div>
+</body>
+</html>

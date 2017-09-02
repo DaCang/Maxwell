@@ -10,3 +10,19 @@ CREATE TABLE `user` (
 
 
 
+CREATE TABLE `notice` (
+  `notice_id` varchar(30) NOT NULL,
+  `notict_time` datetime DEFAULT NULL,
+  `notice_title` varchar(45) DEFAULT NULL,
+  `notice_content` text,
+  `issue_user` varchar(30) DEFAULT NULL,
+  `exec_user` varchar(30) DEFAULT NULL,
+  `is_exec` varchar(3) DEFAULT NULL,
+  `exec_time` datetime DEFAULT NULL,
+  `exec_remark` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`notice_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+
