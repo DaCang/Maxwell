@@ -8,6 +8,13 @@ CREATE TABLE `user` (
   UNIQUE KEY `idx_user_username` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
 
+CREATE TABLE `dept` (
+  `dept_id` varchar(45) NOT NULL,
+  `dept_name` varchar(100) DEFAULT NULL,
+  `dept_up` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`dept_id`),
+  UNIQUE KEY `dept_id` (`dept_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='部门表';
 
 
 CREATE TABLE `notice` (
