@@ -25,7 +25,7 @@ public class Notice {
     }
 
     public void setNoticeId (String noticeId) {
-        this.noticeId = noticeId;
+        this.noticeId = setNullString(noticeId);
     }
 
     public String getNoticeTime () {
@@ -33,7 +33,7 @@ public class Notice {
     }
 
     public void setNoticeTime (String noticeTime) {
-        this.noticeTime = noticeTime;
+        this.noticeTime = setNullString(noticeTime);
     }
 
     public String getNoticeTitle () {
@@ -41,7 +41,7 @@ public class Notice {
     }
 
     public void setNoticeTitle (String noticeTitle) {
-        this.noticeTitle = noticeTitle;
+        this.noticeTitle = setNullString(noticeTitle);
     }
 
     public String getNoticeContent () {
@@ -49,7 +49,7 @@ public class Notice {
     }
 
     public void setNoticeContent (String noticeContent) {
-        this.noticeContent = noticeContent;
+        this.noticeContent = setNullString(noticeContent);
     }
 
     public String getIssueUser () {
@@ -57,7 +57,7 @@ public class Notice {
     }
 
     public void setIssueUser (String issueUser) {
-        this.issueUser = issueUser;
+        this.issueUser = setNullString(issueUser);
     }
 
     public String getExecUser () {
@@ -65,7 +65,7 @@ public class Notice {
     }
 
     public void setExecUser (String execUser) {
-        this.execUser = execUser;
+        this.execUser = setNullString(execUser);
     }
 
     public String getIsExec () {
@@ -73,7 +73,7 @@ public class Notice {
     }
 
     public void setIsExec (String isExec) {
-        this.isExec = isExec;
+        this.isExec = setNullString(isExec);
     }
 
     public String getExecTime () {
@@ -81,7 +81,7 @@ public class Notice {
     }
 
     public void setExecTime (String execTime) {
-        this.execTime = execTime;
+        this.execTime = setNullString(execTime);
     }
 
     public String getExecRemark () {
@@ -89,7 +89,7 @@ public class Notice {
     }
 
     public void setExecRemark (String execRemark) {
-        this.execRemark = execRemark;
+        this.execRemark = setNullString(execRemark);
     }
 
     @Override
@@ -105,5 +105,11 @@ public class Notice {
                 ", execTime='" + execTime + '\'' +
                 ", execRemark='" + execRemark + '\'' +
                 '}';
+    }
+    private String setNullString(String str){
+
+        if(str!=null&&!"".equals(str)){}
+        else  str = "";
+        return  str;
     }
 }

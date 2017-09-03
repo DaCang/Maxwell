@@ -12,6 +12,7 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 
 public class NoticeDaoImp implements NoticeDao {
 
@@ -37,6 +38,15 @@ public class NoticeDaoImp implements NoticeDao {
 
 
                     notice.setNoticeId(rs.getString(1));
+                    notice.setNoticeTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").
+                                            format(rs.getTimestamp(2)));
+                    notice.setNoticeTitle(rs.getString(3));
+                    notice.setNoticeContent(rs.getString(4));
+                    notice.setIssueUser(rs.getString(5));
+                    notice.setExecUser(rs.getString(6));
+                    notice.setIsExec(rs.getString(7));
+                    notice.setExecTime(rs.getString(8));
+                    notice.setExecRemark(rs.getString(9));
 
                 }
                 return notice;
