@@ -41,6 +41,13 @@
                 alert(111);
             }
         });
+        var role = '<%=user.getRoleId()%>'
+        //alert(role);
+        if(role.indexOf("system") >= 0){
+            $("#manager").show()
+        }else{
+            $("#manager").hide()
+        }
     });
 </script>
 
@@ -75,6 +82,7 @@
         <li><a href="#tabs-1">个人信息</a></li>
         <li><a href="#tabs-2">部门信息</a></li>
         <li><a href="notice/notice.html">通知</a></li>
+        <li id="manager"><a href="back/manager.jsp">后台管理</a></li>
     </ul>
     <div id="tabs-1">
         <div id="users-info" class="ui-widget">

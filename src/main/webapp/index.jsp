@@ -18,6 +18,8 @@
   <base href="<%=basePath%>">
   <%-- <%String msg=(String)request.getSession().getAttribute("msg"); %> --%>
 
+
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
     <!-- Bootstrap Core CSS -->
     <link href="${pageContext.request.contextPath}/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 

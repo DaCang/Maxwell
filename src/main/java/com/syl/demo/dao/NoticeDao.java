@@ -4,7 +4,7 @@ import com.syl.demo.pojo.Notice;
 
 public interface NoticeDao {
 
-     void getNoticeObject();
+
 
 
     String getNoticeStr();

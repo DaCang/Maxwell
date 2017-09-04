@@ -11,15 +11,28 @@
     <script>
         $(function() {
 
-            text();
+            $.getJSON("notice/notice.json",function(data){
+                var accordion = $("#accordion")
+                var accordionHtml = "";//存储数据的变量
+                accordion.empty();//清空内容
+                $.each(data,function(infoIndex,info){
+                    var temp = "<h3>noticeId:"+info["noticeId"]+"</h3>";
+                   accordionHtml += "<h4>"+info["noticeTitle"]+"</h4>";
+                   accordionHtml += "<p>"+info["noticeContent"]+"</p>";
+                    //accordionHtml += "邮箱："+info["email"]+"<br>";
+                    accordionHtml += "<hr>"
+                })
+                accordion.html(accordionHtml);//显示处理后的数据
+            })
+           // text();
             var str="hello";
             var str1="hello 222";
-            $("#accordion").append("<h3>notice 1</h3>" +
+            /*$("#accordion").append("<h3>notice 1</h3>" +
                                 "<div><p>" +str+
                                  "</p></div>");
             $("#accordion").append("<h3>notice 2</h3>" +
                                 "<div><p>" +str1+
-                                 "</p></div>");
+                                 "</p></div>");*/
             $( "#accordion" ).accordion(
                 {
                     collapsible: true,
@@ -27,18 +40,7 @@
                 }
 
             );
-            $.getJSON("notice/userinfo.json",function(data){
-                var accordion = $("#accordion")
-                var accordionHtml = "";//存储数据的变量
-                accordion.empty();//清空内容
-                $.each(data,function(infoIndex,info){
-                    accordionHtml += "<h3>："+info["name"]+"<h3>";
-                    accordionHtml += "性别："+info["sex"]+"<br>";
-                    accordionHtml += "邮箱："+info["email"]+"<br>";
-                    accordionHtml += "<hr>"
-                })
-                accordion.html(strHtml);//显示处理后的数据
-            })
+
 
         });
         function text(){
