@@ -3,6 +3,9 @@ package com.syl.demo.util;
 
 import java.io.*;
 
+/**
+ * 文件处理类
+ */
 public class FileUtil {
 
     /**
