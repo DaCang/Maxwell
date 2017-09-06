@@ -1,17 +1,34 @@
-package com.syl.demo.service;
+package com.syl.demo.util;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.serializer.SerializerFeature;
 
 import java.io.*;
 
 public class FileUtil {
 
-    public static boolean writeTOFile(String str,String fileToPath) {
+    /**
+     * @param str        要写入的字符串
+     * @param fileToPath 要写入文件的路径
+     * @param fileName   要写入文件的名称
+     * @return
+     */
+    public static boolean writeTOFile(String str,String fileToPath,String fileName) {
         // TODO Auto-generated method stub
         // file(内存)----输入流---->【程序】----输出流---->file(内存)
 
-        File file = new File(fileToPath, "notice.json");
+        if(fileToPath==null||"".equals(fileToPath)){
+            System.out.println(FileUtil.class+"要写入文件的路径不能为null或者空字符串");
+            return false;
+        }
+        if(fileName==null||"".equals(fileName)){
+            System.out.println(FileUtil.class+"要写入文件的名称不能为null或者空字符串");
+            return false;
+        }
+
+        if(str==null){
+            System.out.println(FileUtil.class+"要写入的字符串不能为null");
+            return false;
+        }
+        File file = new File(fileToPath, fileName);
         try {
             file.createNewFile(); // 创建文件
         } catch (IOException e) {
@@ -23,6 +40,7 @@ public class FileUtil {
         // 向文件写入内容(输出流)
         byte bt[] = new byte[1024];
         try {
+
             bt = str.getBytes("UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
@@ -42,20 +60,10 @@ public class FileUtil {
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+            System.out.println("----");
         }
-        return false;
+        return true;
     }
 
-    public static String getPath(){
-        File directory = new File("");// 参数为空
-        String courseFile = null;
-        try {
-            courseFile = directory.getCanonicalPath().replace("bin","webapps")+"\\spring-demo-02\\notice\\";
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-        }
-        //return courseFile;
-        return "D:\\ideaWORK\\spring-demo-02\\src\\main\\webapp\\notice"; //IDEA下打开
-    }
+
 }

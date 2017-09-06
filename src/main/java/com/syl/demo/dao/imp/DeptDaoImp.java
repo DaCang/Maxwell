@@ -2,7 +2,6 @@ package com.syl.demo.dao.imp;
 
 import com.syl.demo.dao.DeptDao;
 import com.syl.demo.pojo.Dept;
-import com.syl.demo.pojo.User;
 import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;

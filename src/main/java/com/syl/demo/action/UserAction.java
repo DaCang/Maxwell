@@ -1,17 +1,12 @@
 package com.syl.demo.action;
 
 
-import com.syl.demo.dao.UserDao;
 import com.syl.demo.dao.imp.DeptDaoImp;
 import com.syl.demo.dao.imp.UserDaoImp;
 import com.syl.demo.pojo.Dept;
-import com.syl.demo.pojo.Role;
 import com.syl.demo.pojo.User;
+import com.syl.demo.util.SpringContextUtil;
 import org.apache.log4j.Logger;
-import org.springframework.beans.BeansException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Component;
-import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -130,7 +125,7 @@ public class UserAction extends HttpServlet {
 
 
         super.init(config);
-       userDao=(UserDaoImp)SpringContextUtil.getBean("userDaoImp");
+       userDao=(UserDaoImp) SpringContextUtil.getBean("userDaoImp");
        deptDao=(DeptDaoImp) SpringContextUtil.getBean("deptDaoImp");
        //user=(User)SpringContextUtil.getBean("user");
         //role=(Role) applicationContext.getBean("role");

@@ -24,15 +24,6 @@
                 })
                 accordion.html(accordionHtml);//显示处理后的数据
             })
-           // text();
-            var str="hello";
-            var str1="hello 222";
-            /*$("#accordion").append("<h3>notice 1</h3>" +
-                                "<div><p>" +str+
-                                 "</p></div>");
-            $("#accordion").append("<h3>notice 2</h3>" +
-                                "<div><p>" +str1+
-                                 "</p></div>");*/
             $( "#accordion" ).accordion(
                 {
                     collapsible: true,
@@ -43,16 +34,7 @@
 
 
         });
-        function text(){
-            var json = {"options":"[{\'text\':\'王家湾\',\'value\':\'9\'}," +
-            "{\'text\':\'李家湾\',\'value\':\'10\'}," +
-            "{\'text\':\'邵家湾\',\'value\':\'13\'}]"};
-            json = eval(json.options)
-            for(var i=0; i<json.length; i++)
-            {
-                alert(json[i].text+" " + json[i].value)
-            }
-        }
+
     </script>
 </head>
 <body>

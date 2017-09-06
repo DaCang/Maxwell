@@ -4,5 +4,5 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd"
 >
-    <bean id="app" class="com.syl.demo.action.SpringContextUtil"></bean>
+    <bean id="app" class="com.syl.demo.util.SpringContextUtil"></bean>
 </beans>

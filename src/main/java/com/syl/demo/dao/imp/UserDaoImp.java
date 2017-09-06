@@ -27,8 +27,6 @@ public class UserDaoImp implements UserDao {
 
     @Override
     public Boolean findUser () {
-        //jdbcTemplate = (JdbcTemplate) SpringContextUtil.getBean("jdbcTemplate");
-        //jdbcTemplate = this.getJdbcTemplate();
         String query_count_sql = "SELECT count(*) FROM user " +
                 " where user_id='" + user.getUserId() + "' " +
                 " and password='" + user.getPassWord() + "'  " +
@@ -38,10 +36,7 @@ public class UserDaoImp implements UserDao {
         if (count != 1) {
             return false;
         }
-        //user=u;
         logger.debug(user.toString());
-       // System.out.println("--------->"+user.toString());
-        //System.out.println(u.getUserName() + " queryForInt :" + count);
         return true;
     }
 
