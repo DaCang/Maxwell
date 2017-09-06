@@ -1,6 +1,5 @@
 package com.syl.demo.dao.imp;
 
-import com.syl.demo.action.SpringContextUtil;
 import com.syl.demo.dao.UserDao;
 import com.syl.demo.pojo.User;
 import org.apache.log4j.Logger;
@@ -12,8 +11,6 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class UserDaoImp implements UserDao {

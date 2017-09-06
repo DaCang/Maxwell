@@ -1,6 +1,5 @@
 package com.syl.demo.pojo;
 
-import com.syl.ioc.setter_injection.Food;
 
 //@Component(value = "user")
 public class User {
