@@ -13,7 +13,7 @@
     User user = (User) request.getSession().getAttribute("user");
     Dept dept = (Dept) request.getSession().getAttribute("dept");
 %>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,12 +23,12 @@
 <script>
     $(function() {
         $( "#tabs" ).tabs({
-            cache:false,        //是否缓存远程tab内容，默认为false
-            event:"mouseover",      //切换条件，也可以设为mouseover，hover
-            collapsible:true,   //再次点击，可折叠选项卡
-            collapsible:true,   //设置为true时将设置一个选中的tab再此被选中时执行反选操作
-            fx:{ opacity: 'toggle'},    //在隐藏或者显示面板的时候开启动画
-            selected:0,         //从0开始的序列值,设置第几个tab将在初始化时被选中. 设置为-1则不选中所有tab.
+           // cache:false,        //是否缓存远程tab内容，默认为false
+           // event:"click",      //切换条件，也可以设为mouseover，hover
+            //collapsible:true,   //再次点击，可折叠选项卡
+           // collapsible:true,   //设置为true时将设置一个选中的tab再此被选中时执行反选操作
+           // fx:{ opacity: 'toggle'},    //在隐藏或者显示面板的时候开启动画
+            //selected:0,         //从0开始的序列值,设置第几个tab将在初始化时被选中. 设置为-1则不选中所有tab.
             beforeLoad:function(event,ui){
                 //当远程加载失败时加载的函数
                 ui.jqXHR.error(function(){
@@ -81,8 +81,9 @@
     <ul>
         <li><a href="#tabs-1">个人信息</a></li>
         <li><a href="#tabs-2">部门信息</a></li>
-        <li><a href="notice/notice.html">通知</a></li>
-        <li id="manager"><a href="back/manager.jsp">后台管理</a></li>
+        <li id="manager"><a href="/back/manager.jsp">后台管理</a></li>
+        <li><a href="/notice/notice.jsp">通知</a></li>
+
     </ul>
     <div id="tabs-1">
         <div id="users-info" class="ui-widget">
