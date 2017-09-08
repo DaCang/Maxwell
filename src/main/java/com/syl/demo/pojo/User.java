@@ -1,7 +1,6 @@
 package com.syl.demo.pojo;
 
 
-//@Component(value = "user")
 public class User {
 
 
