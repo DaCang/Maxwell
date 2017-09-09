@@ -30,4 +30,14 @@ public class Dept {
     public void setDeptUp (String deptUp) {
         this.deptUp = deptUp;
     }
+
+
+    @Override
+    public String toString () {
+        return "Dept{" +
+                "deptId='" + deptId + '\'' +
+                ", deptName='" + deptName + '\'' +
+                ", deptUp='" + deptUp + '\'' +
+                '}';
+    }
 }

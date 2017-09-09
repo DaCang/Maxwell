@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.syl.demo.dao.DeptDao">
+    <sql id="Base_Column_List" >
+        dept_id as deptId,dept_name as  deptName,dept_up as deptUp
+    </sql>
+
+    <select id="getAllDeptInfo" resultType="dept" >
+        select
+        <include refid="Base_Column_List" />
+        from dept
+    </select>
+    
+    <insert id="createDept" parameterType="dept" keyColumn="dept_id" >
+
+      INSERT  INTO dept (dept_id,dept_name,dept_up) VALUES (#{deptId},#{deptName},#{deptUp})
+    </insert>
+
+</mapper>

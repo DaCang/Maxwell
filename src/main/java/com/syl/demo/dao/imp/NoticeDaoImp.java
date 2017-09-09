@@ -1,9 +1,11 @@
 package com.syl.demo.dao.imp;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.syl.demo.dao.DeptDao;
 import com.syl.demo.dao.NoticeDao;
+import com.syl.demo.pojo.Dept;
 import com.syl.demo.pojo.Notice;
+import com.syl.demo.util.MybatisUtil;
+import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -26,53 +28,61 @@ public class NoticeDaoImp implements NoticeDao {
     private JdbcTemplate jdbcTemplate;
 
     @SuppressWarnings("unchecked")
-    private List<Notice> getNoticeObject () {
-        String query_info_sql = "SELECT * FROM notice " ;
-        List<Notice> noticeList;
-        noticeList = (List) jdbcTemplate.query(query_info_sql, new PreparedStatementSetter() {
+    public List<Notice> getNoticeObject () {
 
-            public void setValues (PreparedStatement ps) throws SQLException {
+        SqlSession session = null;
+        List<Notice> notice ;
+        try {
 
+            session = MybatisUtil.getSession();
+            NoticeDao noticeDao =  session.getMapper(NoticeDao.class);
+            notice =noticeDao.getNoticeObject();
+            System.out.println(notice.toString());
+           /* Dept d = new Dept();
+            d.setDeptId("20170909001");
+            d.setDeptName("第一支部一分部");
+            d.setDeptUp("20170909");
+            deptDao.createDept(d);
+            session.commit();*/
 
-            }
-
-        }, new ResultSetExtractor() {
-
-            public Object extractData (ResultSet rs) throws SQLException, DataAccessException {
-                List<Notice> tempList = new ArrayList<>();
-                while (rs.next()) {
-
-                    Notice notice = new Notice();
-                    notice.setNoticeId(rs.getString(1));
-                    notice.setNoticeTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").
-                                            format(rs.getTimestamp(2)));
-                    notice.setNoticeTitle(rs.getString(3));
-                    notice.setNoticeContent(rs.getString(4));
-                    notice.setIssueUser(rs.getString(5));
-                    notice.setExecUser(rs.getString(6));
-                    notice.setIsExec(rs.getString(7));
-                    notice.setExecTime(rs.getString(8));
-                    notice.setExecRemark(rs.getString(9));
-                    tempList.add(notice);
-                }
-                return tempList;
-            }
-        });
-    return  noticeList;
+        } finally {
+            session.close();
+        }
+        return notice;
+//        String query_info_sql = "SELECT * FROM notice " ;
+//        List<Notice> noticeList;
+//        noticeList = (List) jdbcTemplate.query(query_info_sql, new PreparedStatementSetter() {
+//
+//            public void setValues (PreparedStatement ps) throws SQLException {
+//
+//
+//            }
+//
+//        }, new ResultSetExtractor() {
+//
+//            public Object extractData (ResultSet rs) throws SQLException, DataAccessException {
+//                List<Notice> tempList = new ArrayList<>();
+//                while (rs.next()) {
+//
+//                    Notice notice = new Notice();
+//                    notice.setNoticeId(rs.getString(1));
+//                    notice.setNoticeTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").
+//                                            format(rs.getTimestamp(2)));
+//                    notice.setNoticeTitle(rs.getString(3));
+//                    notice.setNoticeContent(rs.getString(4));
+//                    notice.setIssueUser(rs.getString(5));
+//                    notice.setExecUser(rs.getString(6));
+//                    notice.setIsExec(rs.getString(7));
+//                    notice.setExecTime(rs.getString(8));
+//                    notice.setExecRemark(rs.getString(9));
+//                    tempList.add(notice);
+//                }
+//                return tempList;
+//            }
+//        });
+//    return  noticeList;
     }
 
-    @Override
-    public String getNoticeStr ()
-    {
-
-
-
-       // logger.info(JSON.toJSONString(notice));
-        return JSON.toJSONString(getNoticeObject(),
-                SerializerFeature.WriteMapNullValue,
-                SerializerFeature.WriteNullStringAsEmpty,
-                SerializerFeature.PrettyFormat);
-    }
 
 
 

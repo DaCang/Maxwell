@@ -1,20 +1,19 @@
 package com.syl.demo.service;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.syl.demo.dao.imp.NoticeDaoImp;
 import com.syl.demo.util.FileUtil;
 import java.io.File;
 import java.io.IOException;
 
-public class NoticeService {
+public class NoticeService  extends  AbstractService{
 
     NoticeDaoImp noticeDaoImp;
     private  final  String fileName="notice.json";
 
     public  void work(){
-        // file(内存)----输入流---->【程序】----输出流---->file(内存)
-
-        System.out.println("----");
-        FileUtil.writeTOFile( noticeDaoImp.getNoticeStr(),getPath(),fileName);
+        getWork(noticeDaoImp);
     }
 
     public NoticeDaoImp getNoticeDaoImp () {
@@ -24,6 +23,20 @@ public class NoticeService {
     public void setNoticeDaoImp (NoticeDaoImp noticeDaoImp) {
         this.noticeDaoImp = noticeDaoImp;
     }
+
+
+
+    public void getWork(NoticeDaoImp noticeDaoImp ){
+        // file(内存)----输入流---->【程序】----输出流---->file(内存)
+        String noticeStr = ObjectToJson(noticeDaoImp.getNoticeObject());
+        FileUtil.writeTOFile( noticeStr,getPath(),fileName);
+    }
+
+    @Override
+    public String ObjectToJson(Object object){
+        return super.ObjectToJson(object);
+    }
+
 
     public static String getPath(){
         File directory = new File("");// 参数为空

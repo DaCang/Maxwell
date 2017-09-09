@@ -2,6 +2,7 @@ package com.syl.demo.dao.imp;
 
 import com.syl.demo.dao.DeptDao;
 import com.syl.demo.pojo.Dept;
+import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -11,6 +12,9 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
+
+import static com.syl.demo.util.MybatisUtil.sqlSessionFactory;
 
 public class DeptDaoImp implements DeptDao {
 
@@ -52,6 +56,17 @@ public class DeptDaoImp implements DeptDao {
 
         return dept;
 
+    }
+
+    @Override
+    public List<Dept> getAllDeptInfo () {
+        return null;
+    }
+
+
+    @Override
+    public boolean createDept (Dept dept) {
+        return false;
     }
 
     public Dept getDept () {

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--定义别名-->
+    <typeAliases>
+        <typeAlias alias="dept" type="com.syl.demo.pojo.Dept"></typeAlias>
+    </typeAliases>
+    <!-- 对事务的管理和连接池的配置 -->
+    <environments default="development">
+        <environment id="development">
+            <!--采用JDBC数据库事务管理-->
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver" />
+                <property name="url" value="jdbc:mysql://localhost:3306/demo_02?useSSL=true" />
+                <property name="username" value="syl_demo_02" />
+                <property name="password" value="song" />
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="com/syl/demo/dao/mapper/deptMapper.xml" />
+        <mapper resource="com/syl/demo/dao/mapper/noticeMapper.xml" />
+    </mappers>
+</configuration>

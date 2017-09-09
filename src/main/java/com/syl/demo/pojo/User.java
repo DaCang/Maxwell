@@ -71,4 +71,16 @@ public class User {
     public void setDeptId (String deptId) {
         this.deptId = deptId;
     }
+
+    @Override
+    public String toString () {
+        return "User{" +
+                "userId='" + userId + '\'' +
+                ", userName='" + userName + '\'' +
+                ", passWord='" + passWord + '\'' +
+                ", status='" + status + '\'' +
+                ", roleId='" + roleId + '\'' +
+                ", deptId='" + deptId + '\'' +
+                '}';
+    }
 }

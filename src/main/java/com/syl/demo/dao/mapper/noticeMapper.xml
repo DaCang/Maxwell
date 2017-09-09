@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.syl.demo.dao.NoticeDao">
+    <sql id="Base_Column_List" >
+        notice_id as noticeId ,
+        notict_time as notictTime,
+        notice_title as noticeTitle,
+        notice_content as noticeContent,
+        issue_user as  issueUser,
+        exec_user as execUser,
+        is_exec as  isExec,
+        exec_time as  execTime,
+        exec_remark as execRemark
+    </sql>
+
+    <select id="getNoticeObject" resultType="com.syl.demo.pojo.Notice" >
+        select
+        <include refid="Base_Column_List" />
+        from notice
+    </select>
+
+
+
+</mapper>
