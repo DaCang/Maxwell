@@ -20,6 +20,7 @@
             </dataSource>
         </environment>
     </environments>
+
     <mappers>
         <mapper resource="com/syl/demo/dao/mapper/deptMapper.xml" />
         <mapper resource="com/syl/demo/dao/mapper/noticeMapper.xml" />
