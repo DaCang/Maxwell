@@ -12,7 +12,13 @@
         <include refid="Base_Column_List" />
         from dept
     </select>
-    
+
+    <select id="getDeptInfo" resultType="dept" >
+        select
+        <include refid="Base_Column_List" />
+        from dept
+        where dept_id=#{deptId}
+    </select>
     <insert id="createDept" parameterType="dept" keyColumn="dept_id" >
 
       INSERT  INTO dept (dept_id,dept_name,dept_up) VALUES (#{deptId},#{deptName},#{deptUp})

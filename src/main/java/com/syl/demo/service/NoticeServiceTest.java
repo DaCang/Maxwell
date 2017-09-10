@@ -9,6 +9,12 @@ import static org.junit.Assert.*;
 
 public class NoticeServiceTest {
     @Test
+    public void getNoticeObject () throws Exception {
+        NoticeService ns = new NoticeService();
+        ns.getNoticeObject();
+    }
+
+    @Test
     public void work () throws Exception {
         NoticeService ns = new NoticeService();
 

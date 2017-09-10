@@ -5,6 +5,7 @@ import com.syl.demo.dao.imp.DeptDaoImp;
 import com.syl.demo.dao.imp.UserDaoImp;
 import com.syl.demo.pojo.Dept;
 import com.syl.demo.pojo.User;
+import com.syl.demo.service.DeptService;
 import com.syl.demo.util.SpringContextUtil;
 import org.apache.log4j.Logger;
 
@@ -24,7 +25,7 @@ public class UserAction extends HttpServlet {
 
     UserDaoImp userDao ;
 
-    DeptDaoImp  deptDao;
+    DeptService deptService;
 
 
     /**
@@ -56,14 +57,14 @@ public class UserAction extends HttpServlet {
         String user_id = request.getParameter("user_id");
         String passWord = request.getParameter("password");
         User user=userDao.getUser();
-        Dept dept=deptDao.getDept();
+        Dept dept;
         user.setUserId(user_id);
         user.setPassWord(passWord);
         if(userDao.findUser()){
             //System.out.println(user_id+" is exist!!");
             logger.info(user_id+" is exist!!");
             user=userDao.getUserInfo();
-            dept=deptDao.getDeptInfo(user.getDeptId());
+            dept=deptService.getDeptInfo(user.getDeptId());
             //request.setAttribute("user",user);
             request.getSession(false).setAttribute("user",
                     user);
@@ -126,7 +127,7 @@ public class UserAction extends HttpServlet {
 
         super.init(config);
        userDao=(UserDaoImp) SpringContextUtil.getBean("userDaoImp");
-       deptDao=(DeptDaoImp) SpringContextUtil.getBean("deptDaoImp");
+        deptService=(DeptService) SpringContextUtil.getBean("deptService");
        //user=(User)SpringContextUtil.getBean("user");
         //role=(Role) applicationContext.getBean("role");
 

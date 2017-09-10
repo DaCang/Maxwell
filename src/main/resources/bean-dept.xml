@@ -8,5 +8,6 @@
 
 </bean>
     <bean id="dept" class="com.syl.demo.pojo.Dept"></bean>
+    <bean id="deptService" class="com.syl.demo.service.DeptService"></bean>
 
 </beans>
