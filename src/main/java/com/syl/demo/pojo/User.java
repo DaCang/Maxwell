@@ -65,7 +65,12 @@ public class User {
 
 
     public String getDeptId () {
-        return deptId;
+        if("system".equals(roleId)){
+            return null;
+        }else{
+            return deptId;
+        }
+
     }
 
     public void setDeptId (String deptId) {

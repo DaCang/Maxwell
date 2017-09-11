@@ -9,9 +9,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.syl.demo.pojo.User" %>
 <%@ page import="com.syl.demo.pojo.Dept" %>
+<%@ page import="java.util.List" %>
 <%
     User user = (User) request.getSession().getAttribute("user");
-    Dept dept = (Dept) request.getSession().getAttribute("dept");
+    List<Dept> deptList = (List<Dept>) request.getSession().getAttribute("dept");
+
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -72,7 +74,7 @@
 <div >
 <form >
     <h2 class="ui-corner-right">
-        <p>欢迎</p><strong><%=user.getUserName()%>(<%=dept.getDeptName()%>)</strong>!
+        <p>欢迎<strong><%=user.getUserName()%></strong>!</p>
     </h2>
 </form>
 
@@ -117,10 +119,16 @@
                 </tr>
                 </thead>
                 <tbody>
-                <td><%=dept.getDeptId()%></td>
-                <td><%=dept.getDeptName()%></td>
-                <td><%=dept.getDeptUp()!=null?dept.getDeptUp():""%></td>
+                <%for (int i=0;i<deptList.size();i++){%>
+                <tr>
+                    <td><%=deptList.get(i).getDeptId()%></td>
+                    <td><%=deptList.get(i).getDeptName()%></td>
+                    <td><%=deptList.get(i).getDeptUp()!=null?deptList.get(i).getDeptUp():""%></td>
+
                 </tr>
+                  <% }%>
+
+
                 </tbody>
             </table>
         </div>

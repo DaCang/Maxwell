@@ -20,7 +20,9 @@ public class MybatisUtilTest {
 
             session =MybatisUtil.getSession();
             DeptDao deptDao =  session.getMapper(DeptDao.class);
-            List<Dept> dept =deptDao.getAllDeptInfo();
+            Dept d = new Dept();
+            d.setDeptId(null);
+            List<Dept> dept =deptDao.getDeptInfo(d);
             System.out.println(dept.toString());
            /* Dept d = new Dept();
             d.setDeptId("20170909001");
@@ -30,11 +32,11 @@ public class MybatisUtilTest {
             session.commit();*/
 
 
-            List<Notice> notice ;
-            session = MybatisUtil.getSession();
-            NoticeDao noticeDao =  session.getMapper(NoticeDao.class);
-            notice =noticeDao.getNoticeObject();
-            System.out.println(notice.toString());
+//            List<Notice> notice ;
+//            session = MybatisUtil.getSession();
+//            NoticeDao noticeDao =  session.getMapper(NoticeDao.class);
+//            notice =noticeDao.getNoticeObject();
+//            System.out.println(notice.toString());
 
         } finally {
             session.close();

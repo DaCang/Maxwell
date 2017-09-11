@@ -3,28 +3,22 @@
 
 
 <mapper namespace="com.syl.demo.dao.DeptDao">
+
+
     <sql id="Base_Column_List" >
         dept_id as deptId,dept_name as  deptName,dept_up as deptUp
     </sql>
 
+
+
+
     <!-- 获得所有的部门信息-->
-    <select id="getAllDeptInfo" resultType="dept" >
+    <select id="getDeptInfo"  parameterType="dept" resultType="dept" >
         select
         <include refid="Base_Column_List" />
-        from dept
-        <if test="studentName !=null ">
-            where dept_id=#{deptId}
-        </if>
-
-    </select>
-
-    <!-- -->
-    <select id="getDeptInfo" resultType="dept" >
-        select
-        <include refid="Base_Column_List" />
-        from dept
-        <if test="studentName !=null ">
-            where dept_id=#{deptId}
+        from dept where 1=1
+       <if test="deptId !=null " >
+            and dept_id=#{deptId}
         </if>
     </select>
     <insert id="createDept" parameterType="dept" keyColumn="dept_id" >

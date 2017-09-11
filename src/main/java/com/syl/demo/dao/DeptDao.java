@@ -8,7 +8,7 @@ public interface DeptDao {
 
 
 
-     List<Dept> getDeptInfo(String dept_id);
+     List<Dept> getDeptInfo(Dept dept);
 
      boolean createDept(Dept dept);
 }

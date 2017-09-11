@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 
 public class UserAction extends HttpServlet {
@@ -57,19 +58,22 @@ public class UserAction extends HttpServlet {
         String user_id = request.getParameter("user_id");
         String passWord = request.getParameter("password");
         User user=userDao.getUser();
-        Dept dept;
+        List<Dept> deptList;
         user.setUserId(user_id);
         user.setPassWord(passWord);
         if(userDao.findUser()){
             //System.out.println(user_id+" is exist!!");
             logger.info(user_id+" is exist!!");
             user=userDao.getUserInfo();
-            dept=deptService.getDeptInfo(user.getDeptId());
+
+
+            deptList=deptService.getDeptInfo(user.getDeptId());
+            System.out.println(deptList);
             //request.setAttribute("user",user);
             request.getSession(false).setAttribute("user",
                     user);
             request.getSession(false).setAttribute("dept",
-                    dept);
+                    deptList);
             request.getRequestDispatcher("/login/loginSuccess.jsp").forward(request, response);
             //response.sendRedirect("/login/loginSuccess.jsp");
         }else{
