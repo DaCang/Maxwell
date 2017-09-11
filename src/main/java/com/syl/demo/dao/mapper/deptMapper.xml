@@ -7,17 +7,25 @@
         dept_id as deptId,dept_name as  deptName,dept_up as deptUp
     </sql>
 
+    <!-- 获得所有的部门信息-->
     <select id="getAllDeptInfo" resultType="dept" >
         select
         <include refid="Base_Column_List" />
         from dept
+        <if test="studentName !=null ">
+            where dept_id=#{deptId}
+        </if>
+
     </select>
 
+    <!-- -->
     <select id="getDeptInfo" resultType="dept" >
         select
         <include refid="Base_Column_List" />
         from dept
-        where dept_id=#{deptId}
+        <if test="studentName !=null ">
+            where dept_id=#{deptId}
+        </if>
     </select>
     <insert id="createDept" parameterType="dept" keyColumn="dept_id" >
 

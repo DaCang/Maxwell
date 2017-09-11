@@ -6,10 +6,9 @@ import java.util.List;
 
 public interface DeptDao {
 
-     Dept getDeptInfo(String dept_id);
 
 
-     List<Dept> getAllDeptInfo();
+     List<Dept> getDeptInfo(String dept_id);
 
      boolean createDept(Dept dept);
 }
