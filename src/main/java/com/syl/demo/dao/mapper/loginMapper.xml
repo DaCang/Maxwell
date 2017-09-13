@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.syl.demo.dao.LoginDao">
+
+
+    <!-- 获得所有的部门信息-->
+    <select id="findUser"  parameterType="com.syl.demo.pojo.User" resultType="Integer" >
+        select
+        count(*)
+        from user  where user_id=#{userId}
+        and password=#{passWord}
+        AND  status = '0'
+    </select>
+
+</mapper>
