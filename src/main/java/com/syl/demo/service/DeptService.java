@@ -8,20 +8,36 @@ public class DeptService extends CommonService {
 
     DeptDaoImp deptDaoImp;
 
-   public  String res(String dept_id){
-       return ObjectToJson(getDeptInfo (dept_id));
-   }
 
-    public  <T> T getDeptInfo (String dept_id) {
+    @Override
+    public String ObjectToJson (Object object) {
+        return super.ObjectToJson(object);
+    }
+
+    public  String getDeptInfo (String dept_id) {
 
         Dept dept = new Dept();
         dept.setDeptId(dept_id);
 
-        return (T)deptDaoImp.getDeptInfo(dept);
+        return ObjectToJson(deptDaoImp.getDeptInfo(dept));
     }
 
     public void setDeptDaoImp (DeptDaoImp deptDaoImp) {
         this.deptDaoImp = deptDaoImp;
     }
 
+
+
+    public  String getDeptInfoByRole (String dept_id,String role_id) {
+        Dept dept = new Dept();
+       if(!role_id.contains("system")){
+           dept.setDeptId(dept_id);
+       }
+        return ObjectToJson(deptDaoImp.getDeptInfo(dept));
+
+
+
+
+
+    }
 }

@@ -1,7 +1,11 @@
 package com.syl.demo.dao.imp;
 
+import com.syl.demo.dao.DeptDao;
 import com.syl.demo.dao.UserDao;
+import com.syl.demo.pojo.Dept;
 import com.syl.demo.pojo.User;
+import com.syl.demo.util.MybatisUtil;
+import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -11,6 +15,7 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 
 public class UserDaoImp implements UserDao {
@@ -22,10 +27,10 @@ public class UserDaoImp implements UserDao {
     private JdbcTemplate jdbcTemplate;
 
 
-    @Override
-    public Boolean findUser () {
+
+    public Boolean findUser (User user) {
         String query_count_sql = "SELECT count(*) FROM user " +
-                " where user_id='" + user.getUserId() + "' " +
+        " where user_id='" + user.getUserId() + "' " +
                 " and password='" + user.getPassWord() + "'  " +
                 " AND  status = '0' ";
 
@@ -38,6 +43,27 @@ public class UserDaoImp implements UserDao {
     }
 
     @Override
+    public Boolean findUser () {
+        return true;
+    }
+
+    @Override
+    public List<User> getUserInfo (User user) {
+        SqlSession session = null;
+        List<User> userList;
+        try {
+
+
+            session = MybatisUtil.getSession();
+            UserDao userDao = session.getMapper(UserDao.class);
+            userList = userDao.getUserInfo(user);
+        } finally {
+            session.close();
+        }
+        return userList;
+    }
+
+    /*@Override
     public User getUserInfo () {
         String query_info_sql = "SELECT * FROM user " +
                 " WHERE user_id=? " +
@@ -74,7 +100,7 @@ public class UserDaoImp implements UserDao {
 
 
     }
-
+*/
     public User getUser () {
         return user;
     }

@@ -9,7 +9,8 @@ public class CommonService {
         return  JSON.toJSONString(object,
                 SerializerFeature.WriteMapNullValue,
                 SerializerFeature.WriteNullStringAsEmpty,
-                SerializerFeature.PrettyFormat);
+                SerializerFeature.PrettyFormat,
+                SerializerFeature.SortField);
 
     }
 }

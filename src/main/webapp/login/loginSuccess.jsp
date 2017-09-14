@@ -11,8 +11,8 @@
 <%@ page import="com.syl.demo.pojo.Dept" %>
 <%@ page import="java.util.List" %>
 <%
-    User user = (User) request.getSession().getAttribute("user");
-    List<Dept> deptList = (List<Dept>) request.getSession().getAttribute("dept");
+    String user_id = (String) request.getAttribute("user_id");
+    List<Dept> deptList = (List<Dept>) request.getAttribute("dept");
 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -23,7 +23,14 @@
 <script src="/jquery/jquery.js"></script>
 <script src="/jquery/jquery-ui.js"></script>
 <script>
+    var user_id ='<%=user_id%>';
+    var role_id ="";
+    var dept_id= "";
     $(function() {
+
+
+        loadUserInfo();
+        setTimeout("loadDeptInfo()",1000)
         $( "#tabs" ).tabs({
            // cache:false,        //是否缓存远程tab内容，默认为false
            // event:"click",      //切换条件，也可以设为mouseover，hover
@@ -43,14 +50,116 @@
                 alert(111);
             }
         });
-        var role = '<%=user.getRoleId()%>'
+       /*
         //alert(role);
         if(role.indexOf("system") >= 0){
             $("#manager").show()
         }else{
             $("#manager").hide()
-        }
+        }*/
     });
+/*
+*
+*[
+	{
+		"deptId":"",
+		"passWord":"123",
+		"roleId":"system",
+		"status":"0",
+		"userId":"admin",
+		"userName":"系统管理员"
+	},
+	{
+		"deptId":"001",
+		"passWord":"syl",
+		"roleId":"001",
+		"status":"0",
+		"userId":"syl",
+		"userName":"宋永利"
+	}
+]*/
+    /*
+    * 获取用户信息
+    * */
+    function loadUserInfo () {
+        var userInfoHtml = "";
+        var userInfo = $("#userInfo")
+
+        var ls_url="/userAction.do?user_id="+user_id;
+        //alert(ls_url);
+        $.ajax({
+            url:ls_url,
+            async: false,
+            type:"get",
+            dataType:"text",
+            success:function (data) {
+               // alert(data);
+                var list = eval("("+data+")");
+                for(var i=0;i<list.length;i++){
+                    userInfoHtml = userInfoHtml+
+                        "<tr>" +
+                            "<td>"+list[i].userId+"</td>" +
+                            "<td>"+list[i].userName+"</td>" +
+                            "<td>"+list[i].passWord+"</td>" +
+                            "<td>"+list[i].roleId+"</td>" +
+                        "</tr>";
+                    if(list[i].userId==user_id){
+                        role_id = list[i].roleId;
+                        dept_id = list[i].deptId;
+                    }
+                }
+                userInfo.html(userInfoHtml);//显示处理后的数据
+            }
+        });
+    }
+    /*
+    * [
+	{
+		"deptId":"001",
+		"deptName":"总部",
+		"deptUp":""
+	},
+	{
+		"deptId":"20170909",
+		"deptName":"第一支部",
+		"deptUp":"001"
+	},
+	{
+		"deptId":"20170909001",
+		"deptName":"第一支部一分部",
+		"deptUp":"20170909"
+	}
+    ]*/
+    /*
+    * 获取部门信息
+    * */
+    function loadDeptInfo () {
+        var deptInfoHtml = "";
+        var deptInfo = $("#deptInfo")
+
+        var ls_url="/deptAction.do?dept_id="+dept_id+"&role_id="+role_id;
+        //alert(ls_url);
+        $.ajax({
+            url:ls_url,
+            async: false,
+            type:"get",
+            dataType:"text",
+            success:function (data) {
+                //alert(data);
+                var list = eval("("+data+")");
+               // alert(list);
+                for(var i=0;i<list.length;i++){
+                    deptInfoHtml = deptInfoHtml+
+                        "<tr>" +
+                            "<td>"+list[i].deptId+"</td>" +
+                            "<td>"+list[i].deptName+"</td>" +
+                            "<td>"+list[i].deptUp+"</td>" +
+                        "</tr>";
+                }
+                deptInfo.html(deptInfoHtml);//显示处理后的数据*/
+            }
+        });
+    }
 </script>
 
 <style type="text/css">
@@ -69,12 +178,12 @@
 <head>
     <title>loginSuccess</title>
 </head>
-<body>
+<body >
 
 <div >
 <form >
     <h2 class="ui-corner-right">
-        <p>欢迎<strong><%=user.getUserName()%></strong>!</p>
+       <%-- <p>欢迎<strong><%=user.getUserName()%></strong>!</p>--%>
     </h2>
 </form>
 
@@ -93,17 +202,13 @@
                 <thead>
                     <tr class="ui-widget-header ">
                         <th>用户ID</th>
-                        <th>用户名</th>
-                        <th>密码</th>
+                       <th>用户名</th>
+                         <th>密码</th>
                         <th>权限ID</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <td><%=user.getUserId()%></td>
-                    <td><%=user.getUserName()%></td>
-                    <td><%=user.getPassWord()%></td>
-                    <td><%=user.getRoleId()!=null?user.getRoleId():""%></td>
-                </tr>
+                <tbody id="userInfo">
+
                 </tbody>
             </table>
         </div>
@@ -118,15 +223,8 @@
                     <th>上级部门</th>
                 </tr>
                 </thead>
-                <tbody>
-                <%for (int i=0;i<deptList.size();i++){%>
-                <tr>
-                    <td><%=deptList.get(i).getDeptId()%></td>
-                    <td><%=deptList.get(i).getDeptName()%></td>
-                    <td><%=deptList.get(i).getDeptUp()!=null?deptList.get(i).getDeptUp():""%></td>
+                <tbody id="deptInfo">
 
-                </tr>
-                  <% }%>
 
 
                 </tbody>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.syl.demo.dao.UserDao">
+
+
+    <sql id="Base_Column_List" >
+        user_id as userId,
+        user_name as  userName,
+        password as passWord,
+        role_ids as roleId,
+        status as status,
+        dept_id as deptId
+    </sql>
+
+
+
+
+    <!-- 获得所有的部门信息-->
+    <select id="getUserInfo"  parameterType="com.syl.demo.pojo.User" resultType="com.syl.demo.pojo.User" >
+        select
+        <include refid="Base_Column_List" />
+        from user where 1=1
+       <if test="userId !=null " >
+            and user_id=#{userId}
+        </if>
+    </select>
+
+</mapper>

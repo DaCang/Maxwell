@@ -23,6 +23,7 @@ public class SpringXmlContextUtil {
 
             return   t;
         } catch (BeansException e) {
+            e.printStackTrace();
             System.out.println("spring 初始化上下文错误:"+e.getMessage());
             return null;
         }

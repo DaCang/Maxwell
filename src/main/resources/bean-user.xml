@@ -4,9 +4,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd"
 >
-<bean id="userDaoImp" class="com.syl.demo.dao.imp.UserDaoImp" autowire="byName">
+    <bean id="userService" class="com.syl.demo.service.UserService" autowire="byName"></bean>
 
-</bean>
+    <bean id="userDaoImp" class="com.syl.demo.dao.imp.UserDaoImp" autowire="byName"></bean>
+
     <bean id="user" class="com.syl.demo.pojo.User"></bean>
 
 </beans>

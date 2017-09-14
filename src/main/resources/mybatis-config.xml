@@ -24,5 +24,6 @@
     <mappers>
         <mapper resource="com/syl/demo/dao/mapper/deptMapper.xml" />
         <mapper resource="com/syl/demo/dao/mapper/noticeMapper.xml" />
+        <mapper resource="com/syl/demo/dao/mapper/loginMapper.xml" />
     </mappers>
 </configuration>
