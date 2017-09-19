@@ -5,8 +5,7 @@
 <configuration>
     <!-- 定义别名 -->
     <typeAliases>
-        <typeAlias alias="dept" type="com.syl.demo.pojo.Dept"></typeAlias>
-        <typeAlias alias="user" type="com.syl.demo.pojo.User"></typeAlias>
+        <package name="com.syl.demo.pojo"></package>
     </typeAliases>
     <!-- 对事务的管理和连接池的配置 -->
     <environments default="development">

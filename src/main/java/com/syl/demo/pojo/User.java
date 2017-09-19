@@ -1,6 +1,8 @@
 package com.syl.demo.pojo;
 
+import org.apache.ibatis.type.Alias;
 
+@Alias("user")
 public class User {
 
 

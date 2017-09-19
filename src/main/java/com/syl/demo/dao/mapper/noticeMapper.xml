@@ -15,7 +15,7 @@
         exec_remark as execRemark
     </sql>
 
-    <select id="getNoticeObject" resultType="com.syl.demo.pojo.Notice" >
+    <select id="getNoticeObject" resultType="notice" >
         select
         <include refid="Base_Column_List" />
         from notice
