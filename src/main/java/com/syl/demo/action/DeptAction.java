@@ -2,6 +2,7 @@ package com.syl.demo.action;
 
 import com.syl.demo.service.DeptService;
 import com.syl.demo.util.SpringContextUtil;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +13,9 @@ import java.io.IOException;
 
 @WebServlet("/deptAction.do")
 public class DeptAction extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    protected Logger logger = Logger.getLogger(DeptAction.class);
     DeptService deptService;
     @Override
     protected void doPost (HttpServletRequest req, HttpServletResponse resp)
@@ -27,7 +31,7 @@ public class DeptAction extends HttpServlet {
         String role_id = req.getParameter("role_id");
         deptInfo = deptService.getDeptInfoByRole(dept_id,role_id);
 
-        System.out.println(deptInfo);
+        logger.info(deptInfo);
 
         resp.setContentType("text/plain;charset=UTF-8");
         resp.setContentType("text/plain; charset=gbk");

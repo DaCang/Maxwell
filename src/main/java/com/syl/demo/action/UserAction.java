@@ -50,7 +50,7 @@ public class UserAction extends HttpServlet {
         String role_id = request.getParameter("role_id");
         String userInfo = userService.getUserInfo(user_id,role_id);
 
-        System.out.println(userInfo);
+        logger.info(userInfo);
         response.setContentType("text/plain;charset=UTF-8");
         response.setContentType("text/plain; charset=gbk");
         response.getWriter().print(userInfo);

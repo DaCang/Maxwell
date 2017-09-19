@@ -5,6 +5,7 @@ package com.syl.demo.action;
 import com.syl.demo.pojo.User;
 import com.syl.demo.service.LoginService;
 import com.syl.demo.util.SpringContextUtil;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -18,6 +19,8 @@ import java.io.IOException;
 public class LoginAction extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
+
+    protected Logger logger = Logger.getLogger(LoginAction.class);
 
     LoginService loginService ;
 
@@ -52,13 +55,13 @@ public class LoginAction extends HttpServlet {
 
         User u =loginService.findUser(user_id,passWord);
         if(u!=null){
-            System.out.println(u.getUserId()+" is exist!!");
+            logger.info(u.getUserId()+" is exist!!");
             request.setAttribute("user",
                     u);
             request.getRequestDispatcher("/login/loginSuccess.jsp").forward(request, response);
         }else{
             String msg = user_id+" is not  exist!!";
-            System.out.println(msg);
+            logger.info(msg);
             //response.setStatus(550);
             request.setAttribute("msg",
                     msg);
