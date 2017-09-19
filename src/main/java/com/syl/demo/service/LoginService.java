@@ -6,15 +6,16 @@ import com.syl.demo.pojo.User;
 public class LoginService extends  CommonService {
 
     LoginDaoImp loginDaoImp;
-    public  Boolean findUser(User user){
+    public  User findUser(String user_id,String passWord){
 
-        int count;
-        count = loginDaoImp.findUser(user);
-        if (count != 1) {
-            return false;
-        }
+        User user = new User();
+        user.setUserId(user_id);
+        user.setPassWord(passWord);
+        User u;
+        u = loginDaoImp.findUser(user);
 
-        return true;
+
+        return u;
     }
 
     public LoginDaoImp getLoginDaoImp () {

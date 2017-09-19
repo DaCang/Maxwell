@@ -32,6 +32,6 @@ public class DeptDaoImp implements DeptDao {
 
     @Override
     public boolean createDept (Dept dept) {
-        return false;
+        return true;
     }
 }

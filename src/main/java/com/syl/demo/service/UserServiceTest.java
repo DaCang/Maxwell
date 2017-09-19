@@ -1,18 +1,31 @@
 package com.syl.demo.service;
 
+import com.syl.demo.pojo.User;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class UserServiceTest {
     @Test
+    public void createUser () throws Exception {
+        User user = new User();
+        user.setUserId("test");
+        user.setUserName("测试");
+        user.setPassWord("test");
+
+        UserService userService = new UserService();
+        int res = userService.createUser(user);
+        System.out.println(res);
+    }
+
+    @Test
     public void getUserInfo () throws Exception {
 
         String userInfo;
         UserService userService = new UserService();
-        userInfo = userService.getUserInfo("system");
-        System.out.println(userInfo);
-        userInfo = userService.getUserInfo("syl");
+        userInfo = userService.getUserInfo("admin","system");
+        //System.out.println(userInfo);
+        userInfo = userService.getUserInfo("syl","001");
         System.out.println(userInfo);
     }
 

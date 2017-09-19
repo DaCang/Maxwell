@@ -20,16 +20,16 @@ public class MybatisUtilTest {
 
             session =MybatisUtil.getSession();
             DeptDao deptDao =  session.getMapper(DeptDao.class);
-            Dept d = new Dept();
+          /*  Dept d = new Dept();
             d.setDeptId(null);
             List<Dept> dept =deptDao.getDeptInfo(d);
-            System.out.println(dept.toString());
-           /* Dept d = new Dept();
-            d.setDeptId("20170909001");
-            d.setDeptName("第一支部一分部");
-            d.setDeptUp("20170909");
-            deptDao.createDept(d);
-            session.commit();*/
+            System.out.println(dept.toString());*/
+            Dept d = new Dept();
+            d.setDeptId("20170919003");
+            d.setDeptName("第二支部");
+            d.setDeptUp("2017");
+            System.out.println( deptDao.createDept(d));
+            session.commit();
 
 
 //            List<Notice> notice ;

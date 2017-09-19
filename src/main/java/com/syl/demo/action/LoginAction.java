@@ -49,19 +49,18 @@ public class LoginAction extends HttpServlet {
 
         String user_id = request.getParameter("user_id");
         String passWord = request.getParameter("password");
-        User user = new User();
-        user.setUserId(user_id);
-        user.setPassWord(passWord);
-        if(loginService.findUser(user)){
-            System.out.println(user_id+" is exist!!");
-            request.setAttribute("user_id",
-                    user.getUserId());
+
+        User u =loginService.findUser(user_id,passWord);
+        if(u!=null){
+            System.out.println(u.getUserId()+" is exist!!");
+            request.setAttribute("user",
+                    u);
             request.getRequestDispatcher("/login/loginSuccess.jsp").forward(request, response);
         }else{
             String msg = user_id+" is not  exist!!";
             System.out.println(msg);
             //response.setStatus(550);
-            request.getSession(false).setAttribute("msg",
+            request.setAttribute("msg",
                     msg);
             response.sendRedirect("/error/userNotExist.jsp");
 

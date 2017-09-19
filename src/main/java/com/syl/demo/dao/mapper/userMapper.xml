@@ -17,14 +17,22 @@
 
 
 
-    <!-- 获得所有的部门信息-->
-    <select id="getUserInfo"  parameterType="com.syl.demo.pojo.User" resultType="com.syl.demo.pojo.User" >
+    <!-- 获得用户信息-->
+    <select id="getUserInfo"  parameterType="user" resultType="user" >
         select
         <include refid="Base_Column_List" />
         from user where 1=1
-       <if test="userId !=null " >
+       <if test="roleId !=null " >
             and user_id=#{userId}
         </if>
     </select>
+
+
+    <!--创建用户-->
+    <insert id="createUser" parameterType="user" keyColumn="user_id" >
+
+        INSERT INTO user (user_id,user_name,password,role_ids,status,dept_id)
+        VALUES(#{userId},#{userName},#{passWord},#{roleId},#{status},#{deptId})
+    </insert>
 
 </mapper>

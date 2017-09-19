@@ -7,21 +7,22 @@ import org.apache.ibatis.session.SqlSession;
 
 
 public class LoginDaoImp implements LoginDao {
+
     @Override
-    public Integer findUser (User user) {
+    public User findUser (User user) {
 
         SqlSession session = null;
-        int count;
+        User u;
         try {
 
 
             session = MybatisUtil.getSession();
             LoginDao loginDao = session.getMapper(LoginDao.class);
-            count = loginDao.findUser(user);
+            u = loginDao.findUser(user);
 
         } finally {
             session.close();
         }
-        return count;
+        return u;
     }
 }
