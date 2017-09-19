@@ -74,10 +74,14 @@ public class UserDaoImp implements UserDao {
             UserDao userDao = session.getMapper(UserDao.class);
             res = userDao.createUser(user);
             session.commit();
-        } finally {
+            return res;
+        }catch (Exception e){
+            e.printStackTrace();
+            return -1;
+        }finally {
             session.close();
         }
-        return res;
+
     }
 
     /*@Override

@@ -29,11 +29,14 @@ public class UserService extends  CommonService {
         return ObjectToJson(userList);
     }
 
-    public int createUser (User user) {
+    public boolean createUser (User user) {
         userDaoImp = new UserDaoImp();//测试的时候打开
         int res =userDaoImp.createUser(user);
-
-        return res;
+        if(res>0){
+            System.out.println("插入成功！"+res+"行受影响！");
+            return true;
+        }
+        return false;
     }
 
 
