@@ -12,10 +12,12 @@ public class UserServiceTest {
         user.setUserId("test");
         user.setUserName("测试");
         user.setPassWord("test");
+        user.setRoleId("001");
+        user.setDeptId("20170919001");
+        user.setStatus("0");
 
         UserService userService = new UserService();
-        int res = userService.createUser(user);
-        System.out.println(res);
+        System.out.println(userService.createUser(user));
     }
 
     @Test
