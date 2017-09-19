@@ -16,21 +16,26 @@ public class UserService extends  CommonService {
         userDaoImp.findUser(user);
         return false;
     }
-    public String getUserInfo(String user_id){
-        //UserDaoImp userDaoImp = SpringXmlContextUtil.getBean("userDaoImp");
+    public String getUserInfo(String user_id,String role_id){
+        userDaoImp = new UserDaoImp();//测试的时候打开
         List userList;
         User user ;
         user =  new User();
         user.setUserId(user_id);
-        userList = userDaoImp.getUserInfo(user);//根据user_id查询用户信息
-
-        //如果用户的权限是system查询所有用户信息
-        if(((User)userList.get(0)).getRoleId().contains("system")){
-            user =  new User();
-            userList = userDaoImp.getUserInfo(user);//查询所有用户信息
+        if(!role_id.contains("system")){//如果不是system,只查询本人信息
+            user.setRoleId(role_id);
         }
+        userList = userDaoImp.getUserInfo(user);//根据user_id查询用户信息
         return ObjectToJson(userList);
     }
+
+    public int createUser (User user) {
+        userDaoImp = new UserDaoImp();//测试的时候打开
+        int res =userDaoImp.createUser(user);
+
+        return res;
+    }
+
 
     public UserDaoImp getUserDaoImp () {
         return userDaoImp;

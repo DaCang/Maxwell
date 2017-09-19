@@ -63,6 +63,23 @@ public class UserDaoImp implements UserDao {
         return userList;
     }
 
+    @Override
+    public int createUser (User user) {
+        SqlSession session = null;
+        int res;
+        try {
+
+
+            session = MybatisUtil.getSession();
+            UserDao userDao = session.getMapper(UserDao.class);
+            res = userDao.createUser(user);
+            session.commit();
+        } finally {
+            session.close();
+        }
+        return res;
+    }
+
     /*@Override
     public User getUserInfo () {
         String query_info_sql = "SELECT * FROM user " +

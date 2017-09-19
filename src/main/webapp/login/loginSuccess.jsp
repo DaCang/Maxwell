@@ -11,7 +11,7 @@
 <%@ page import="com.syl.demo.pojo.Dept" %>
 <%@ page import="java.util.List" %>
 <%
-    String user_id = (String) request.getAttribute("user_id");
+    User user = (User) request.getAttribute("user");
     List<Dept> deptList = (List<Dept>) request.getAttribute("dept");
 
 %>
@@ -23,9 +23,9 @@
 <script src="/jquery/jquery.js"></script>
 <script src="/jquery/jquery-ui.js"></script>
 <script>
-    var user_id ='<%=user_id%>';
-    var role_id ="";
-    var dept_id= "";
+    var user_id ='<%=user.getUserId()%>';
+    var role_id ='<%=user.getRoleId()%>';
+    var dept_id= '<%=user.getDeptId()%>';
     $(function() {
 
 
@@ -85,7 +85,7 @@
         var userInfoHtml = "";
         var userInfo = $("#userInfo")
 
-        var ls_url="/userAction.do?user_id="+user_id;
+        var ls_url="/userAction.do?user_id="+user_id+"&role_id="+role_id;
         //alert(ls_url);
         $.ajax({
             url:ls_url,
@@ -103,10 +103,6 @@
                             "<td>"+list[i].passWord+"</td>" +
                             "<td>"+list[i].roleId+"</td>" +
                         "</tr>";
-                    if(list[i].userId==user_id){
-                        role_id = list[i].roleId;
-                        dept_id = list[i].deptId;
-                    }
                 }
                 userInfo.html(userInfoHtml);//显示处理后的数据
             }

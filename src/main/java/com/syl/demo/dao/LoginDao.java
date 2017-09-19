@@ -4,5 +4,5 @@ import com.syl.demo.pojo.User;
 
 public interface LoginDao {
 
-    Integer findUser(User user);
+    User findUser(User user);
 }

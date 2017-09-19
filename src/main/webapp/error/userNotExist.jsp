@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isErrorPage="true" %>
 <%
-    String  msg = (String) request.getSession().getAttribute("msg");
+    String  msg = (String) request.getAttribute("msg");
 %>
 <html>
 <style type="text/css">

@@ -47,7 +47,8 @@ public class UserAction extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String user_id = request.getParameter("user_id");
-        String userInfo = userService.getUserInfo(user_id);
+        String role_id = request.getParameter("role_id");
+        String userInfo = userService.getUserInfo(user_id,role_id);
 
         System.out.println(userInfo);
         response.setContentType("text/plain;charset=UTF-8");

@@ -4,11 +4,19 @@
 
 <mapper namespace="com.syl.demo.dao.LoginDao">
 
+    <sql id="Base_Column_List" >
+        user_id as userId,
+        user_name as  userName,
+        password as passWord,
+        role_ids as roleId,
+        status as status,
+        dept_id as deptId
+    </sql>
 
-    <!-- 获得所有的部门信息-->
-    <select id="findUser"  parameterType="com.syl.demo.pojo.User" resultType="Integer" >
+    <!-- 获得所有的用户信息-->
+    <select id="findUser"  parameterType="user" resultType="user" >
         select
-        count(*)
+        <include refid="Base_Column_List" />
         from user  where user_id=#{userId}
         and password=#{passWord}
         AND  status = '0'

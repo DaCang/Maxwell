@@ -14,5 +14,7 @@ public interface UserDao {
 
     List<User> getUserInfo(User user);
 
+    int createUser(User user);
+
 
 }
