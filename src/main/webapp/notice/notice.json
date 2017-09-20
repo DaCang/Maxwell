@@ -1,46 +1,34 @@
 [
 	{
-		"execRemark":"",
-		"execTime":"",
-		"execUser":"",
-		"isExec":"101",
-		"issueUser":"admin",
 		"noticeContent":"8月9日，南京绕城公路通往三桥方向的匝道处，12辆货车正在集体倒车、掉头、逆行。",
 		"noticeId":"20170904001",
-		"noticeTime":"2017-09-04 14:43:18",
-		"noticeTitle":"12辆大货车组团“违法” 高速下错匝道后强行倒车逆行"
+		"isExec":"101",
+		"noticeTitle":"12辆大货车组团“违法” 高速下错匝道后强行倒车逆行",
+		"noticeTime":"2017-09-04 14:43:18.0",
+		"issueUser":"admin"
 	},
 	{
-		"execRemark":"",
-		"execTime":"",
-		"execUser":"",
-		"isExec":"101",
-		"issueUser":"admin",
 		"noticeContent":"近日，有网友拍到宋仲基和宋慧乔两人的机场照，能清晰的看见两人一前一后，可能怕引起其他人注意，虽然隔着好远，但仍然能感受到他们的甜蜜。",
 		"noticeId":"20170904002",
-		"noticeTime":"2017-09-04 14:48:07",
-		"noticeTitle":"宋仲基宋慧乔公布婚讯之后首次同框 男方眼里满是幸福"
+		"isExec":"101",
+		"noticeTitle":"宋仲基宋慧乔公布婚讯之后首次同框 男方眼里满是幸福",
+		"noticeTime":"2017-09-04 14:48:07.0",
+		"issueUser":"admin"
 	},
 	{
-		"execRemark":"",
-		"execTime":"",
-		"execUser":"",
-		"isExec":"101",
-		"issueUser":"admin",
 		"noticeContent":"十年前，人们最初关注金砖峰会时，当时最“潮”的方式也不过是打开电脑，上门户网站。而十年后的今天，互联网早已“移动”起来，随时随地打开手机就能够查询相关信息。不仅如此，这十年，互联网的发展已经无时无处不在改变着我们的生活。",
 		"noticeId":"20170904003",
-		"noticeTime":"2017-09-04 17:22:07",
-		"noticeTitle":"金砖合作，中国互联网已经先行"
+		"isExec":"101",
+		"noticeTitle":"金砖合作，中国互联网已经先行",
+		"noticeTime":"2017-09-04 17:22:07.0",
+		"issueUser":"admin"
 	},
 	{
-		"execRemark":"",
-		"execTime":"",
-		"execUser":"",
-		"isExec":"101",
-		"issueUser":"admin",
 		"noticeContent":"父亲为女儿取名‘王者荣耀’，成功上户口”。近日，一个普通的户口本在微信朋友圈上流传。此前，还有媒体报道，王姓男孩取名“王子殿下”，白姓女孩取名“白雪公主”等等。",
 		"noticeId":"20170906001",
-		"noticeTime":"2017-09-06 08:37:57",
-		"noticeTitle":"给孩子起名“王者荣耀”好不好？"
+		"isExec":"101",
+		"noticeTitle":"给孩子起名“王者荣耀”好不好？",
+		"noticeTime":"2017-09-06 08:37:57.0",
+		"issueUser":"admin"
 	}
 ]

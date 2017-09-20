@@ -2,12 +2,16 @@ package com.syl.demo.pojo;
 
 import org.apache.ibatis.type.Alias;
 
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.util.Date;
+
 @Alias("notice")
 public class Notice {
 
     String noticeId;
 
-    String noticeTime;
+    Timestamp noticeTime;
 
     String noticeTitle;
 
@@ -31,11 +35,11 @@ public class Notice {
         this.noticeId = noticeId;
     }
 
-    public String getNoticeTime () {
+    public Timestamp getNoticeTime () {
         return noticeTime;
     }
 
-    public void setNoticeTime (String noticeTime) {
+    public void setNoticeTime (Timestamp noticeTime) {
         this.noticeTime = noticeTime;
     }
 

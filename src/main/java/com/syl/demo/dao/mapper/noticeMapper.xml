@@ -5,7 +5,7 @@
 <mapper namespace="com.syl.demo.dao.NoticeDao">
     <sql id="Base_Column_List" >
         notice_id as noticeId ,
-        notict_time as notictTime,
+        notice_time as notictTime,
         notice_title as noticeTitle,
         notice_content as noticeContent,
         issue_user as  issueUser,
@@ -15,9 +15,23 @@
         exec_remark as execRemark
     </sql>
 
-    <select id="getNoticeObject" resultType="notice" >
+    <resultMap type="java.util.Map" id="noticeResultMap">
+
+        <id column="notice_id"  property="noticeId"  />
+        <result column="notice_time" jdbcType="TIMESTAMP" property="noticeTime" javaType="java.sql.Timestamp" />
+        <result column="exec_time" jdbcType="TIMESTAMP" property="execTime" javaType="java.sql.Timestamp" />
+        <result column="notice_title"  property="noticeTitle"  />
+        <result column="notice_content"  property="noticeContent"  />
+        <result column="issue_user"  property="issueUser"  />
+        <result column="exec_user"  property="execUser"  />
+        <result column="notice_content"  property="noticeContent"  />
+        <result column="is_exec"  property="isExec"  />
+        <result column="exec_remark"  property="execRemark"  />
+
+    </resultMap>
+    <select id="getNoticeObject"  resultMap="noticeResultMap" >
         select
-        <include refid="Base_Column_List" />
+         *
         from notice
     </select>
 

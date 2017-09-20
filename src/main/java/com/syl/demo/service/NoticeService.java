@@ -1,5 +1,6 @@
 package com.syl.demo.service;
 
+import com.alibaba.fastjson.JSON;
 import com.syl.demo.dao.NoticeDao;
 import com.syl.demo.dao.imp.NoticeDaoImp;
 import com.syl.demo.pojo.Notice;
@@ -10,6 +11,7 @@ import org.apache.ibatis.session.SqlSession;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 public class NoticeService  extends CommonService {
 
@@ -17,7 +19,7 @@ public class NoticeService  extends CommonService {
     private  final  String fileName="notice.json";
 
     public  void work(){
-        getWork(noticeDaoImp);
+        getWork();
     }
 
     public NoticeDaoImp getNoticeDaoImp () {
@@ -30,9 +32,14 @@ public class NoticeService  extends CommonService {
 
 
 
-    public void getWork(NoticeDaoImp noticeDaoImp ){
+    public void getWork(){
         // file(内存)----输入流---->【程序】----输出流---->file(内存)
-        String noticeStr = ObjectToJson(noticeDaoImp.getNoticeObject());
+        noticeDaoImp = new NoticeDaoImp();//测试的时候打开
+        List<Notice> noticeList;
+        noticeList = noticeDaoImp.getNoticeObject();
+        this.setString(noticeList);
+        String noticeStr = ObjectToJson(noticeList);
+        System.out.println(noticeStr);
         //String noticeStr = ObjectToJson(getNoticeObject ());
         FileUtil.writeTOFile( noticeStr,getPath(),fileName);
     }
@@ -76,5 +83,12 @@ public class NoticeService  extends CommonService {
             session.close();
         }
         return notice;
+    }
+
+    private  void setString(List list){
+        for (int i=0; i<list.size();i++){
+            ((Map)list.get(i)).put("noticeTime",((Map)list.get(i)).get("noticeTime").toString());
+        }
+
     }
 }

@@ -16,12 +16,11 @@ public class NoticeServiceTest {
 
     @Test
     public void work () throws Exception {
+
         NoticeService ns = new NoticeService();
 
-       JdbcTemplate jt =SpringXmlContextUtil.getBean("jdbcTemplate");
-       NoticeDaoImp nd = SpringXmlContextUtil.getBean("noticeDaoImp");
-       nd.setJdbcTemplate(jt);
-       ns.getWork(nd);
+        ns.work();
+
     }
 
 }
