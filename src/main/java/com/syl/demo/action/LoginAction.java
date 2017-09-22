@@ -58,7 +58,9 @@ public class LoginAction extends HttpServlet {
             logger.info(u.getUserId()+" is exist!!");
             request.setAttribute("user",
                     u);
-            request.getRequestDispatcher("/login/loginSuccess.jsp").forward(request, response);
+            //request.getRequestDispatcher("/login/loginSuccess.jsp").forward(request, response);
+            request.getRequestDispatcher("back/index.jsp").forward(request, response);
+
         }else{
             String msg = user_id+" is not  exist!!";
             logger.info(msg);

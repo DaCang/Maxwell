@@ -4,24 +4,33 @@ import java.util.List;
 
 public class Role {
 
-    int roleId;
+    String  roleId;
 
-    List roleList;
+    String roleName;
 
+    String note;
 
-    public int getRoleId () {
+    public String getRoleId () {
         return roleId;
     }
 
-    public void setRoleId (int roleId) {
+    public void setRoleId (String roleId) {
         this.roleId = roleId;
     }
 
-    public List getRoleList () {
-        return roleList;
+    public String getRoleName () {
+        return roleName;
     }
 
-    public void setRoleList (List roleList) {
-        this.roleList = roleList;
+    public void setRoleName (String roleName) {
+        this.roleName = roleName;
+    }
+
+    public String getNote () {
+        return note;
+    }
+
+    public void setNote (String note) {
+        this.note = note;
     }
 }
