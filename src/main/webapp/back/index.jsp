@@ -22,10 +22,21 @@ To change this template use File | Settings | File Templates.
     <title>Lz_CMS-后台管理中心</title>
     <link rel="stylesheet" href="back/layui/css/layui.css">
     <link rel="stylesheet" href="back/css/global.css">
+    <script src="/jquery/jquery.js"></script>
     <script type="text/javascript" src="back/layui/layui.js"></script>
-  <script>
+   <script>
       var user_id ='<%=user.getUserId()%>';
       var role_id ='<%=user.getRoleId()%>';
+
+      //href="back/user_list.jsp"
+      $(function() {
+
+          var user_list_url="back/user_list.jsp?user_id="+user_id+"&role_id="+role_id;
+
+          //alert(user_list_url)
+          $("#user_manager").attr("href",user_list_url);
+      });
+
   </script>
 </head>
 <body>
@@ -84,7 +95,7 @@ To change this template use File | Settings | File Templates.
                 </a>
               </li>
               <li class="layui-nav-item first-item">
-                <a href="back/user_list.jsp" target="main">
+                <a id="user_manager"  target="main">
                   <i class="layui-icon">&#xe609;</i>
                   <cite>用户管理</cite>
                 </a>

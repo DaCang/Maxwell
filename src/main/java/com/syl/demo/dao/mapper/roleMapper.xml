@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.syl.demo.dao.RoleDao">
+
+    <!-- 获得所有权限信息-->
+    <select id="getRoleInfo"  parameterType="role" resultType="role" >
+        select
+        *
+        from role where 1=1
+       <if test="roleId !=null " >
+            and role_id=#{roleId}
+        </if>
+    </select>
+
+
+</mapper>

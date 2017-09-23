@@ -1,0 +1,12 @@
+[
+	{
+		"note":"没有后台管理的权限",
+		"roleId":"001",
+		"roleName":"普通用户"
+	},
+	{
+		"note":"有所有的功能权限",
+		"roleId":"system",
+		"roleName":"管理员"
+	}
+]

@@ -3,7 +3,7 @@ package com.syl.demo.service;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 
-public class CommonService {
+abstract class CommonService {
     public String ObjectToJson(Object object){
 
         return  JSON.toJSONString(object,

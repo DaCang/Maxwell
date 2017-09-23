@@ -13,6 +13,9 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 通知新闻的业务类
+ */
 public class NoticeService  extends CommonService {
 
     NoticeDaoImp noticeDaoImp;

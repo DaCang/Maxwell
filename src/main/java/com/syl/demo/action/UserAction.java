@@ -1,9 +1,11 @@
 package com.syl.demo.action;
 
 
+import com.syl.demo.pojo.User;
 import com.syl.demo.service.UserService;
 import com.syl.demo.util.SpringContextUtil;
 import org.apache.log4j.Logger;
+import org.omg.CORBA.Object;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -11,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class UserAction extends HttpServlet {
@@ -46,16 +50,17 @@ public class UserAction extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String user_id = request.getParameter("user_id");
-        String role_id = request.getParameter("role_id");
-        String userInfo = userService.getUserInfo(user_id,role_id);
+            String user_id = request.getParameter("user_id");
+            String role_id = request.getParameter("role_id");
+            String userInfo = userService.getUserInfo(user_id,role_id);
 
-        logger.info(userInfo);
-        response.setContentType("text/plain;charset=UTF-8");
-        response.setContentType("text/plain; charset=gbk");
-        response.getWriter().print(userInfo);
-        response.getWriter().flush();
-        response.getWriter().close();
+            logger.info(userInfo);
+           /* response.setContentType("text/plain;charset=UTF-8");
+            response.setContentType("text/plain; charset=gbk");
+            response.getWriter().print(userInfo);
+            response.getWriter().flush();
+            response.getWriter().close();*/
+            setResponse(response,userInfo);
 
 
     }
@@ -72,8 +77,36 @@ public class UserAction extends HttpServlet {
      */
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String method = request.getParameter("method");
+        String user_id = request.getParameter("user_id");
+        String resultStr;
+        if(method==null||"".equals(method)){
+            resultStr  = "服务器错误,请联系管理员";
+            logger.info("后台方法跳转失败\n" +
+                    "----------------------------------->"+resultStr+
+                    "<-----------------------------------");
+            setResponse(response,setCodeAndMsg(404,resultStr));
+            return;
+        }
 
-        System.out.println("--------");
+        User user = getUserByRequest(request);
+        System.out.println(method);
+        System.out.println(user.toString());
+        if(userService.createUser(user)){
+
+            resultStr  = user.getUserName()+" 创建成功！";
+            logger.info(user.toString()+"\n" +
+                    "----------------------------------->"+resultStr+
+                    "<-----------------------------------");
+            setResponse(response,setCodeAndMsg(200,resultStr));
+        }else{
+            resultStr  = user.getUserName()+" 创建失败！";
+            logger.info(user.toString()+"\n" +
+                    "----------------------------------->"+resultStr+
+                    "<-----------------------------------");
+            setResponse(response,setCodeAndMsg(500,resultStr));
+        }
+
 
 
 
@@ -94,6 +127,62 @@ public class UserAction extends HttpServlet {
         userService=(UserService) SpringContextUtil.getBean("userService");
 
 
+    }
+
+    public User getUserByRequest(HttpServletRequest request){
+        String user_id = request.getParameter("user_id");
+        String user_name = request.getParameter("user_name");
+        String password = request.getParameter("password");
+        String dept_id = request.getParameter("dept_id");
+        String role_id = request.getParameter("role_id");
+        User user = new User();
+        user.setUserId(user_id);
+        user.setUserName(user_name);
+        user.setPassWord(password);
+        user.setDeptId(dept_id);
+        user.setRoleId(role_id);
+        user.setStatus("0");
+        return user;
+    }
+
+    public  void setResponse(HttpServletResponse response, String jsonStr){
+
+        try {
+            response.setContentType("text/plain;charset=UTF-8");
+            response.setContentType("text/plain; charset=gbk");
+            response.getWriter().print(jsonStr);
+            response.getWriter().flush();
+            response.getWriter().close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                response.setContentType("text/html; charset=gbk");
+
+                response.getWriter().print(
+                        "{\"code\":\"500\" , \"msg\":\""
+                                + replaceBlank(e.getMessage()).replaceAll("\"",
+                                "") + "\" }");
+                response.getWriter().flush();
+                response.getWriter().close();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+
+    }
+
+    private String setCodeAndMsg(int code,String msg){
+        return "{\"code\":\""+code+"\",\"msg\":\""+msg+"\"}";
+
+    }
+    private String replaceBlank(String str) {
+        String dest = "";
+        if (str != null) {
+            Pattern p = Pattern.compile("\\s*|\t|\r|\n");
+            Matcher m = p.matcher(str);
+            dest = m.replaceAll("");
+        }
+        return dest;
     }
 
 }

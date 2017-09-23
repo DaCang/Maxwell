@@ -1,0 +1,27 @@
+[
+	{
+		"deptId":"001",
+		"deptName":"总部",
+		"deptUp":""
+	},
+	{
+		"deptId":"20170909",
+		"deptName":"第一支部",
+		"deptUp":"001"
+	},
+	{
+		"deptId":"20170909001",
+		"deptName":"第一支部一分部",
+		"deptUp":"20170909"
+	},
+	{
+		"deptId":"20170919",
+		"deptName":"第二支部",
+		"deptUp":"2017"
+	},
+	{
+		"deptId":"20170919001",
+		"deptName":"第二支部",
+		"deptUp":"2017"
+	}
+]
