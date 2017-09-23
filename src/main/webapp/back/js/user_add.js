@@ -2,9 +2,8 @@
 $(function() {
 
 
-    getDeptJson();
-
-    getRoleJson();
+    getDeptJson()
+    getRoleJson()
 });
 function getDeptJson() {
     // language=JQuery-CSS

@@ -16,5 +16,7 @@ public interface UserDao {
 
     int createUser(User user);
 
+    int deleteUser(User user);
+
 
 }

@@ -176,7 +176,7 @@ layui.use(['element', 'form', 'upload'], function(){
       shade: [0.2,'#000'] //0.2透明度的白色背景
     });
     var param = data.field;
-    alert(param);
+   // alert(param);
     jq.post('/userAction.do?method=add',param,function(data){
         var result = eval("("+data+")");
       if(result.code == 200){

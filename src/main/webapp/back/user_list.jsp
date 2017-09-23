@@ -125,21 +125,27 @@
 
         //ajax删除
         jq('.del_btn').click(function(){
-            var name = jq(this).attr('category-name');
-            var id = jq(this).attr('category-id');
-            layer.confirm('确定删除【'+name+'】?', function(index){
+            var user_name = jq(this).attr('user-name');
+            var user_id = jq(this).attr('user-id');
+            layer.confirm('确定删除【'+user_name+'】?', function(index){
                 loading = layer.load(2, {
                     shade: [0.2,'#000'] //0.2透明度的白色背景
                 });
-                jq.post('',{'id':id},function(data){
-                    if(data.code == 200){
+                jq.post('/userAction.do?method=delete',{'user_id':user_id},function(data){
+                    if(data==null||data=="") {
                         layer.close(loading);
-                        layer.msg(data.msg, {icon: 1, time: 1000}, function(){
+                        layer.msg("服务器错误,请联系管理员", {icon: 2, anim: 6, time: 1000});
+                        return false;
+                    }
+                    var result = eval("(" + data + ")");
+                    if(result.code == 200){
+                        layer.close(loading);
+                        layer.msg(result.msg, {icon: 1, time: 1000}, function(){
                             location.reload();//do something
                         });
                     }else{
                         layer.close(loading);
-                        layer.msg(data.msg, {icon: 2, anim: 6, time: 1000});
+                        layer.msg(result.msg, {icon: 2, anim: 6, time: 1000});
                     }
                 });
             });

@@ -89,24 +89,39 @@ public class UserAction extends HttpServlet {
             return;
         }
 
-        User user = getUserByRequest(request);
-        System.out.println(method);
-        System.out.println(user.toString());
-        if(userService.createUser(user)){
+        if("add".equals(method)) {
+            User user = getUserByRequest(request);
+            if (userService.createUser(user)) {
 
-            resultStr  = user.getUserName()+" 创建成功！";
-            logger.info(user.toString()+"\n" +
-                    "----------------------------------->"+resultStr+
-                    "<-----------------------------------");
-            setResponse(response,setCodeAndMsg(200,resultStr));
-        }else{
-            resultStr  = user.getUserName()+" 创建失败！";
-            logger.info(user.toString()+"\n" +
-                    "----------------------------------->"+resultStr+
-                    "<-----------------------------------");
-            setResponse(response,setCodeAndMsg(500,resultStr));
+                resultStr = user.getUserName() + " 创建成功！";
+                logger.info(user.toString() + "\n" +
+                        "----------------------------------->" + resultStr +
+                        "<-----------------------------------");
+                setResponse(response, setCodeAndMsg(200, resultStr));
+            } else {
+                resultStr = user.getUserName() + " 创建失败！";
+                logger.info(user.toString() + "\n" +
+                        "----------------------------------->" + resultStr +
+                        "<-----------------------------------");
+                setResponse(response, setCodeAndMsg(500, resultStr));
+            }
+        }else if ("delete".equals(method)) {
+
+            if (userService.deleteUser(user_id)) {
+                resultStr = user_id + " 删除成功！";
+                logger.info("----------------------------------->" + resultStr +
+                          "<-----------------------------------");
+                setResponse(response, setCodeAndMsg(200, resultStr));
+            } else {
+                resultStr = user_id + " 删除失败！";
+                logger.info("----------------------------------->" + resultStr +
+                        "<-----------------------------------");
+                setResponse(response, setCodeAndMsg(500, resultStr));
+
+            }
+
+            setResponse(response, setCodeAndMsg(500, "hello"));
         }
-
 
 
 

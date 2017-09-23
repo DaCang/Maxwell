@@ -38,6 +38,17 @@ public class UserService extends  CommonService {
         }
         return false;
     }
+    public boolean deleteUser (String user_id) {
+        userDaoImp = new UserDaoImp();//测试的时候打开
+        User user = new User();
+        user.setUserId(user_id);
+        int res =userDaoImp.deleteUser(user);
+        if(res>0){
+            System.out.println("删除成功！"+res+"行受影响！");
+            return true;
+        }
+        return false;
+    }
 
 
     public UserDaoImp getUserDaoImp () {

@@ -7,6 +7,12 @@ import static org.junit.Assert.*;
 
 public class UserServiceTest {
     @Test
+    public void deleteUser () throws Exception {
+        UserService userService = new UserService();
+        System.out.println(userService.deleteUser("sfs"));
+    }
+
+    @Test
     public void createUser () throws Exception {
         User user = new User();
         user.setUserId("test");
