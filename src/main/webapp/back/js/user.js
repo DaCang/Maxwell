@@ -31,7 +31,7 @@ function loadUserInfo () {
     var userInfoHtml = "";
     var userInfo = $("#userInfo")
 
-    var ls_url="/userAction.do?user_id="+user_id+"&role_id="+role_id;
+    var ls_url="/userAction.do?method=list&user_id="+user_id+"&role_id="+role_id;
     //alert(ls_url);
     $.ajax({
         url:ls_url,

@@ -78,7 +78,7 @@ To change this template use File | Settings | File Templates.
                 </a>
               </li>
               <li class="layui-nav-item ">
-                <a href="./form.html" target="main">
+                <a href="back/form.html" target="main">
                   <i class="layui-icon">&#xe642;</i>
                   <cite>表单</cite>
                 </a>

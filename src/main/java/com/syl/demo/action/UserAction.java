@@ -50,17 +50,23 @@ public class UserAction extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            String user_id = request.getParameter("user_id");
-            String role_id = request.getParameter("role_id");
-            String userInfo = userService.getUserInfo(user_id,role_id);
+        String method = request.getParameter("method");
+        String user_id = request.getParameter("user_id");
+        String resultStr;
+        if(!checkMethod(request,response)){
+             return;
+        }
+        System.out.println(method);
+        String role_id = request.getParameter("role_id");
+        String userInfo = userService.getUserInfo(user_id,role_id);
 
-            logger.info(userInfo);
-           /* response.setContentType("text/plain;charset=UTF-8");
-            response.setContentType("text/plain; charset=gbk");
-            response.getWriter().print(userInfo);
-            response.getWriter().flush();
-            response.getWriter().close();*/
-            setResponse(response,userInfo);
+        logger.info(userInfo);
+       /* response.setContentType("text/plain;charset=UTF-8");
+        response.setContentType("text/plain; charset=gbk");
+        response.getWriter().print(userInfo);
+        response.getWriter().flush();
+        response.getWriter().close();*/
+        setResponse(response,userInfo);
 
 
     }
@@ -80,12 +86,8 @@ public class UserAction extends HttpServlet {
         String method = request.getParameter("method");
         String user_id = request.getParameter("user_id");
         String resultStr;
-        if(method==null||"".equals(method)){
-            resultStr  = "服务器错误,请联系管理员";
-            logger.info("后台方法跳转失败\n" +
-                    "----------------------------------->"+resultStr+
-                    "<-----------------------------------");
-            setResponse(response,setCodeAndMsg(404,resultStr));
+
+        if(!checkMethod(request,response)){
             return;
         }
 
@@ -200,4 +202,19 @@ public class UserAction extends HttpServlet {
         return dest;
     }
 
+    private boolean checkMethod(HttpServletRequest request, HttpServletResponse response )
+            throws ServletException, IOException {
+        String method = request.getParameter("method");
+        String resultStr;
+        if(method==null||"".equals(method)){
+            resultStr  = "服务器错误,请联系管理员";
+            logger.info("后台方法跳转失败\n" +
+                    "----------------------------------->"+resultStr+
+                    "<-----------------------------------");
+            setResponse(response,setCodeAndMsg(404,resultStr));
+            return false;
+        }else{
+            return true;
+        }
+    }
 }

@@ -51,26 +51,14 @@
                         <th>操作</th>
                     </tr>
                     </thead>
-                    <%--<tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>
-                            学无止境
-                        </td>
-                        <td>文章模型</td>
-                        <td style="text-align: center;">
-                            <a href="./category_add.html" class="layui-btn layui-btn-small" title="编辑"><i class="layui-icon"></i></a>
-                            <a class="layui-btn layui-btn-small layui-btn-danger del_btn" category-id="1" title="删除" category-name="学无止境"><i class="layui-icon"></i></a>
-                        </td>
-                    </tr>
 
-                    </tbody>--%>
                     <tbody id="userInfo">
 
                     </tbody>
                     <thead>
                     <tr>
-                        <th colspan="7"><button class="layui-btn layui-btn-small" lay-submit="" lay-filter="sort">排序</button></th>
+                        <th ><button class="layui-btn layui-btn-small" lay-submit="" lay-filter="sort">排序</button></th>
+                        <th colspan="6"><div id="page"></div></th>
                     </tr>
                     </thead>
                 </table>
@@ -80,7 +68,7 @@
     </div>
 </div>
 <script type="text/javascript">
-    layui.use(['element', 'layer', 'form'], function(){
+    layui.use(['element', 'layer','laypage', 'form'], function(){
         var element = layui.element()
             ,jq = layui.jquery
             ,form = layui.form()
@@ -150,6 +138,25 @@
                 });
             });
 
+        });
+
+        /*
+        * 分页
+        * */
+        laypage({
+            cont: 'page'
+            ,skip: true
+            ,pages: 100 //总页数
+            ,groups: 5 //连续显示分页数
+            ,curr: 1
+            ,jump: function(e, first){ //触发分页后的回调
+                if(!first){ //一定要加此判断，否则初始时会无限刷新
+                    loading = layer.load(2, {
+                        shade: [0.2,'#000'] //0.2透明度的白色背景
+                    });
+                    location.href = '/userAction.do?method=page&&page='+e.curr;
+                }
+            }
         });
 
     })
