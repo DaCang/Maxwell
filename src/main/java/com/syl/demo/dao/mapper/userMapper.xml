@@ -27,6 +27,16 @@
         </if>
     </select>
 
+    <!-- 获得用户信息  分页-->
+    <select id="getUserInfoByPage"   resultType="user" >
+        select
+        <include refid="Base_Column_List" />
+        from user where 1=1
+        <if test="#{start} !=null and #{row_count} !=null " >
+            LIMIT  #{start}, #{row_count}
+        </if>
+    </select>
+
 
     <!--创建用户-->
     <insert id="createUser" parameterType="user" keyColumn="user_id" >
