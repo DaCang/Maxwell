@@ -26,6 +26,7 @@ public class UserService extends  CommonService {
             user.setRoleId(role_id);
         }
         userList = userDaoImp.getUserInfo(user);//根据user_id查询用户信息
+
         return ObjectToJson(userList);
     }
 
@@ -51,6 +52,20 @@ public class UserService extends  CommonService {
     }
 
 
+    public  String getUserInfoByPage(int page){
+        userDaoImp = new UserDaoImp();//测试的时候打开
+        List userList;
+        int aPagSize=5;
+        int start=0;
+        int end=0;
+        start=(page-1)*aPagSize;
+        end=aPagSize;
+
+        userList = userDaoImp.getUserInfoByPage(start,end);//根据user_id查询用户信息
+
+        return ObjectToJson(userList);
+
+    }
     public UserDaoImp getUserDaoImp () {
         return userDaoImp;
     }

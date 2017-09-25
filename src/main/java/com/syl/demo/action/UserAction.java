@@ -52,13 +52,15 @@ public class UserAction extends HttpServlet {
             throws ServletException, IOException {
         String method = request.getParameter("method");
         String user_id = request.getParameter("user_id");
+        String page = request.getParameter("page");
         String resultStr;
         if(!checkMethod(request,response)){
              return;
         }
-        System.out.println(method);
+        System.out.println(page);
         String role_id = request.getParameter("role_id");
-        String userInfo = userService.getUserInfo(user_id,role_id);
+        //String userInfo = userService.getUserInfo(user_id,role_id);
+        String userInfo = userService.getUserInfoByPage(Integer.valueOf(page));
 
         logger.info(userInfo);
        /* response.setContentType("text/plain;charset=UTF-8");
@@ -67,6 +69,7 @@ public class UserAction extends HttpServlet {
         response.getWriter().flush();
         response.getWriter().close();*/
         setResponse(response,userInfo);
+        //setResponse(response, setCodeAndMsg(200, userInfo));
 
 
     }

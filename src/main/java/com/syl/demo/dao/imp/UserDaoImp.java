@@ -105,6 +105,22 @@ public class UserDaoImp implements UserDao {
         }
     }
 
+    @Override
+    public List<User> getUserInfoByPage (int start,int row_count ) {
+        SqlSession session = null;
+        List<User> userList;
+        try {
+
+
+            session = MybatisUtil.getSession();
+            UserDao userDao = session.getMapper(UserDao.class);
+            userList = userDao.getUserInfoByPage(start,row_count );
+        } finally {
+            session.close();
+        }
+        return userList;
+    }
+
     /*@Override
     public User getUserInfo () {
         String query_info_sql = "SELECT * FROM user " +
