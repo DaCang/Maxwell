@@ -2,32 +2,23 @@ package com.syl.demo.dao.imp;
 
 import com.syl.demo.dao.DeptDao;
 import com.syl.demo.pojo.Dept;
-import com.syl.demo.util.MybatisUtil;
-import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Repository;
 
+import javax.annotation.Resource;
 import java.util.List;
 
-
+@Repository("deptDaoImp")
 public class DeptDaoImp implements DeptDao {
 
     static Logger logger = Logger.getLogger(UserDaoImp.class.getName());
 
+    @Resource
+    DeptDao deptDao;
 
     @Override
     public List<Dept> getDeptInfo (Dept dept) {
-        SqlSession session = null;
-        List<Dept> deptList;
-        try {
-
-
-            session = MybatisUtil.getSession();
-            DeptDao deptDao = session.getMapper(DeptDao.class);
-            deptList = deptDao.getDeptInfo(dept);
-        } finally {
-            session.close();
-        }
-        return deptList;
+        return deptDao.getDeptInfo(dept);
     }
 
     @Override

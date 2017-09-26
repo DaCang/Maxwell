@@ -1,7 +1,5 @@
 
 $(function() {
-
-
     layui.use(['element', 'layer','laypage', 'form'], function(){
         var element = layui.element()
             ,jq = layui.jquery
@@ -56,6 +54,7 @@ $(function() {
                         return false;
                     }else{
                         setData(data,e.curr)
+
                     }
                     //var result = eval("("+data+")");
                     //alert(result);
@@ -63,6 +62,7 @@ $(function() {
 
                 }
             })
+
 
         }
     });

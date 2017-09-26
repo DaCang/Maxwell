@@ -5,9 +5,11 @@ import com.syl.demo.pojo.Notice;
 import com.syl.demo.util.MybatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository("deptDaoImp")
 public class NoticeDaoImp implements NoticeDao {
 
     static Logger logger = Logger.getLogger(UserDaoImp.class.getName());

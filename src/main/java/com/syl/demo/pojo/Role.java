@@ -1,6 +1,5 @@
 package com.syl.demo.pojo;
 
-import java.util.List;
 
 public class Role {
 

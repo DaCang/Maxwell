@@ -5,7 +5,6 @@ import com.syl.demo.pojo.User;
 import com.syl.demo.service.UserService;
 import com.syl.demo.util.SpringContextUtil;
 import org.apache.log4j.Logger;
-import org.omg.CORBA.Object;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;

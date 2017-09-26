@@ -2,10 +2,16 @@ package com.syl.demo.service;
 
 import com.syl.demo.dao.imp.LoginDaoImp;
 import com.syl.demo.pojo.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class LoginService extends  CommonService {
 
+
+    @Autowired
     LoginDaoImp loginDaoImp;
+
     public  User findUser(String user_id,String passWord){
 
         User user = new User();
@@ -18,11 +24,5 @@ public class LoginService extends  CommonService {
         return u;
     }
 
-    public LoginDaoImp getLoginDaoImp () {
-        return loginDaoImp;
-    }
 
-    public void setLoginDaoImp (LoginDaoImp loginDaoImp) {
-        this.loginDaoImp = loginDaoImp;
-    }
 }
