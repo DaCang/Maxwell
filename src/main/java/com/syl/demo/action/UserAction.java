@@ -5,10 +5,10 @@ import com.syl.demo.pojo.User;
 import com.syl.demo.service.UserService;
 import com.syl.demo.util.SpringContextUtil;
 import org.apache.log4j.Logger;
-import org.omg.CORBA.Object;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +17,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
+@WebServlet("/userAction.do")
 public class UserAction extends HttpServlet {
 
 

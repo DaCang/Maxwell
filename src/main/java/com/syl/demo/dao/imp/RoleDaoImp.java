@@ -2,25 +2,19 @@ package com.syl.demo.dao.imp;
 
 import com.syl.demo.dao.RoleDao;
 import com.syl.demo.pojo.Role;
-import com.syl.demo.util.MybatisUtil;
-import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
 
+import javax.annotation.Resource;
 import java.util.List;
 
+@Repository("roleDaoImp")
 public class RoleDaoImp implements RoleDao {
+
+    @Resource
+    RoleDao roleDao;
+
     @Override
     public List<Role> getRoleInfo (Role role) {
-        SqlSession session = null;
-        List<Role> roleList;
-        try {
-
-
-            session = MybatisUtil.getSession();
-            RoleDao roleDao = session.getMapper(RoleDao.class);
-            roleList = roleDao.getRoleInfo(role);
-        } finally {
-            session.close();
-        }
-        return roleList;
+        return roleDao.getRoleInfo(role);
     }
 }

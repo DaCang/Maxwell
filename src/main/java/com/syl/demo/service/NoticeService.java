@@ -7,6 +7,8 @@ import com.syl.demo.pojo.Notice;
 import com.syl.demo.util.FileUtil;
 import com.syl.demo.util.MybatisUtil;
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,8 +18,10 @@ import java.util.Map;
 /**
  * 通知新闻的业务类
  */
+@Service
 public class NoticeService  extends CommonService {
 
+    @Autowired
     NoticeDaoImp noticeDaoImp;
     private  final  String fileName="notice.json";
 

@@ -32,16 +32,6 @@
     </listener>
     <!--用于设置context的参数,如果不设置contextConfigLocation则默认的spring配置文件applicationContext.xml放在WEB-INF目录下-->
 
-
-    <servlet>
-        <servlet-name>userAction</servlet-name>
-        <servlet-class>com.syl.demo.action.UserAction</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>userAction</servlet-name>
-        <url-pattern>/userAction.do</url-pattern>
-    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>

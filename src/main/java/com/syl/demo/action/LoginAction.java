@@ -67,7 +67,8 @@ public class LoginAction extends HttpServlet {
             //response.setStatus(550);
             request.setAttribute("msg",
                     msg);
-            response.sendRedirect("/error/userNotExist.jsp");
+            request.getRequestDispatcher("/error/userNotExist.jsp").forward(request, response);
+           // response.sendRedirect("/error/userNotExist.jsp");
 
         }
 

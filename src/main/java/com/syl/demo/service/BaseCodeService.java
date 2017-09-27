@@ -2,10 +2,11 @@ package com.syl.demo.service;
 
 import com.syl.demo.dao.imp.DeptDaoImp;
 import com.syl.demo.dao.imp.RoleDaoImp;
-import com.syl.demo.dao.imp.UserDaoImp;
 import com.syl.demo.pojo.Dept;
 import com.syl.demo.pojo.Role;
 import com.syl.demo.util.FileUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,10 +15,14 @@ import java.util.List;
 /**
  * 一些基础数据的加载
  */
+@Service
 public class BaseCodeService extends  CommonService {
 
+    @Autowired
     DeptDaoImp deptDaoImp;
+    @Autowired
     RoleDaoImp roleDaoImp;
+
     private  final  String fileNameDept="deptBaseCode.json";
     private  final  String fileNameRole="roleBaseCode.json";
 
@@ -30,7 +35,7 @@ public class BaseCodeService extends  CommonService {
     public void writeDeptBaseCode(){
 
         List<Dept> deptList;
-        deptDaoImp = new DeptDaoImp();//测试的时候打开
+       // deptDaoImp = new DeptDaoImp();//测试的时候打开
         Dept dept = new Dept();
         deptList = deptDaoImp.getDeptInfo(dept);
         String noticeStr = ObjectToJson(deptList);
@@ -45,7 +50,7 @@ public class BaseCodeService extends  CommonService {
 
         List<Role> roleList;
 
-        roleDaoImp = new RoleDaoImp();//测试时打开
+        //roleDaoImp = new RoleDaoImp();//测试时打开
         Role role = new Role();
         roleList = roleDaoImp.getRoleInfo(role);
         String roleStr = ObjectToJson(roleList);

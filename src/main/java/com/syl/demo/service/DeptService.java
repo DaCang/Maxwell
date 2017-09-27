@@ -2,10 +2,13 @@ package com.syl.demo.service;
 
 import com.syl.demo.dao.imp.DeptDaoImp;
 import com.syl.demo.pojo.Dept;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-
+@Service
 public class DeptService extends CommonService {
 
+    @Autowired
     DeptDaoImp deptDaoImp;
 
 

@@ -4,20 +4,21 @@ import com.syl.demo.dao.imp.NoticeDaoImp;
 import com.syl.demo.dao.imp.UserDaoImp;
 import com.syl.demo.pojo.User;
 import com.syl.demo.util.SpringXmlContextUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class UserService extends  CommonService {
+    @Autowired
     UserDaoImp userDaoImp;
 
 
-    public  Boolean findUser(User user){
-        userDaoImp.findUser(user);
-        return false;
-    }
+
     public String getUserInfo(String user_id,String role_id){
-        userDaoImp = new UserDaoImp();//测试的时候打开
+        //userDaoImp = new UserDaoImp();//测试的时候打开
         List userList;
         User user ;
         user =  new User();
@@ -40,7 +41,7 @@ public class UserService extends  CommonService {
         return false;
     }
     public boolean deleteUser (String user_id) {
-        userDaoImp = new UserDaoImp();//测试的时候打开
+        //userDaoImp = new UserDaoImp();//测试的时候打开
         User user = new User();
         user.setUserId(user_id);
         int res =userDaoImp.deleteUser(user);
@@ -53,7 +54,7 @@ public class UserService extends  CommonService {
 
 
     public  String getUserInfoByPage(int page){
-        userDaoImp = new UserDaoImp();//测试的时候打开
+       // userDaoImp = new UserDaoImp();//测试的时候打开
         List userList;
         int aPagSize=5;
         int start=0;
@@ -65,13 +66,6 @@ public class UserService extends  CommonService {
 
         return ObjectToJson(userList);
 
-    }
-    public UserDaoImp getUserDaoImp () {
-        return userDaoImp;
-    }
-
-    public void setUserDaoImp (UserDaoImp userDaoImp) {
-        this.userDaoImp = userDaoImp;
     }
 
     @Override
