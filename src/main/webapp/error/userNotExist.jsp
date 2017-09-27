@@ -23,7 +23,7 @@
 <body bgcolor="white" alink="#f5f5dc" >
     <h1 align="center" style="color:red;"><%=msg%></h1>
     <p title="500"  align="right" style="width: 100%; ">
-        <font size="10px"><strong>please try <a href='/index.jsp' title="index.jsp">again</a>.</strong></font>
+        <font size="10px"><strong>please try <a href='/index.html' title="index.jsp">again</a>.</strong></font>
     </p>
 </body>
 </html>

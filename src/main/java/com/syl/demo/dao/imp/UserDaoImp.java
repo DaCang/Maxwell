@@ -13,16 +13,9 @@ public class UserDaoImp implements UserDao {
 
 
     static Logger logger = Logger.getLogger(UserDaoImp.class.getName());
-    User user;
-
-
 
     @Resource
     UserDao userDao;
-
-
-
-
 
     @Override
     public Boolean findUser () {
@@ -61,16 +54,6 @@ public class UserDaoImp implements UserDao {
 
         return userDao.getUserInfoByPage(start,row_count );
     }
-
-
-    public User getUser () {
-        return user;
-    }
-
-    public void setUser (User user) {
-        this.user = user;
-    }
-
 
     public static void main (String[] args) {
         String version= System.getProperty("java.version");

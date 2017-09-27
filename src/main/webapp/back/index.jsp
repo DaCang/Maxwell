@@ -196,7 +196,7 @@ To change this template use File | Settings | File Templates.
 
     <div class="layui-body iframe-container">
         <div class="iframe-mask" id="iframe-mask"></div>
-        <iframe class="admin-iframe" id="admin-iframe" name="main" src="./home.html"></iframe>
+        <iframe class="admin-iframe" id="admin-iframe" name="main" src="back/home.html"></iframe>
     </div>
     
     <div class="layui-footer footer">

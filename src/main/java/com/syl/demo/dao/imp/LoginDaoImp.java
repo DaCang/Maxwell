@@ -14,19 +14,6 @@ public class LoginDaoImp implements LoginDao {
 
     @Override
     public User findUser (User user) {
-
-        //SqlSession session = null;
-        User u;
-        //try {
-
-
-            /*session = MybatisUtil.getSession();
-            LoginDao loginDao = session.getMapper(LoginDao.class);*/
-            u = loginDao.findUser(user);
-
-        //} finally {
-          //  session.close();
-       // }
-        return u;
+        return loginDao.findUser(user);
     }
 }
