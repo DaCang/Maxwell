@@ -102,7 +102,7 @@ public class UserAction extends HttpServlet {
                         "<-----------------------------------");
                 setResponse(response, setCodeAndMsg(500, resultStr));
             }
-        }else if ("delete".equals(method)) {
+        }else if ("del".equals(method)) {
 
             if (userService.deleteUser(user_id)) {
                 resultStr = user_id + " 删除成功！";
@@ -116,12 +116,7 @@ public class UserAction extends HttpServlet {
                 setResponse(response, setCodeAndMsg(500, resultStr));
 
             }
-
-            setResponse(response, setCodeAndMsg(500, "hello"));
         }
-
-
-
     }
 
     /**

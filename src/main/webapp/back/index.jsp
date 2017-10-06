@@ -19,7 +19,7 @@ To change this template use File | Settings | File Templates.
 <html>
 <head>
   <meta charset="UTF-8">
-    <title>Lz_CMS-后台管理中心</title>
+    <title>用户管理系统(User Manager System)</title>
     <link rel="stylesheet" href="back/layui/css/layui.css">
     <link rel="stylesheet" href="back/css/global.css">
     <script src="/jquery/jquery.js"></script>
@@ -43,8 +43,8 @@ To change this template use File | Settings | File Templates.
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header header">
       <div class="layui-main">
-        <a class="logo" href="http://www.phplaozhang.com" target="_blank">
-          <img src="back/images/logo-top.png" alt="Lz_CMS">
+        <a class="logo" href="/" target="_self">
+          <img src="back/images/logo-top.png" alt="User Manager" >
         </a>
         <ul class="layui-nav top-nav-container">
           <li class="layui-nav-item layui-this">
