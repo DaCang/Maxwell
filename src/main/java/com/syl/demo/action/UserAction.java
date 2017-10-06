@@ -52,23 +52,14 @@ public class UserAction extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String method = request.getParameter("method");
-        String user_id = request.getParameter("user_id");
         String page = request.getParameter("page");
-        String resultStr;
         if(!checkMethod(request,response)){
              return;
         }
         System.out.println(page);
-        String role_id = request.getParameter("role_id");
-        //String userInfo = userService.getUserInfo(user_id,role_id);
         String userInfo = userService.getUserInfoByPage(Integer.valueOf(page));
 
         logger.info(userInfo);
-       /* response.setContentType("text/plain;charset=UTF-8");
-        response.setContentType("text/plain; charset=gbk");
-        response.getWriter().print(userInfo);
-        response.getWriter().flush();
-        response.getWriter().close();*/
         setResponse(response,userInfo);
         //setResponse(response, setCodeAndMsg(200, userInfo));
 
@@ -111,7 +102,7 @@ public class UserAction extends HttpServlet {
                         "<-----------------------------------");
                 setResponse(response, setCodeAndMsg(500, resultStr));
             }
-        }else if ("delete".equals(method)) {
+        }else if ("del".equals(method)) {
 
             if (userService.deleteUser(user_id)) {
                 resultStr = user_id + " 删除成功！";
@@ -125,12 +116,7 @@ public class UserAction extends HttpServlet {
                 setResponse(response, setCodeAndMsg(500, resultStr));
 
             }
-
-            setResponse(response, setCodeAndMsg(500, "hello"));
         }
-
-
-
     }
 
     /**
