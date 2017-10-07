@@ -192,7 +192,7 @@ function del(obj) {
             loading = layer.load(2, {
                 shade: [0.2, '#000'] //0.2透明度的白色背景
             });
-            jq.post('/userAction.do?method=del', {'user_id': user_id}, function (data) {
+            jq.post('/user/del.con', {user_id: user_id}, function (data) {
                 if (data == null || data == "") {
                     layer.close(loading);
                     layer.msg("服务器错误,请联系管理员", {icon: 2, anim: 6, time: 1000});

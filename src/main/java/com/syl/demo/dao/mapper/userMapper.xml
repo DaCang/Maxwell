@@ -8,7 +8,7 @@
     <sql id="Base_Column_List" >
         user_id as userId,
         user_name as  userName,
-        password as passWord,
+        password as password,
         role_ids as roleId,
         status as status,
         dept_id as deptId
@@ -42,7 +42,7 @@
     <insert id="createUser" parameterType="user" keyColumn="user_id" >
 
         INSERT INTO user (user_id,user_name,password,role_ids,status,dept_id)
-        VALUES(#{userId},#{userName},#{passWord},#{roleId},#{status},#{deptId})
+        VALUES(#{userId},#{userName},#{password},#{roleId},#{status},#{deptId})
     </insert>
 
     <!--删除用户-->
