@@ -1,8 +1,7 @@
 package com.syl.demo.pojo;
 
-import org.apache.ibatis.type.Alias;
 
-@Alias("user")
+
 public class User {
 
 
@@ -11,7 +10,7 @@ public class User {
 
     String userName;
 
-    String passWord;
+    String password;
 
     String status;
 
@@ -49,12 +48,12 @@ public class User {
         this.userName = userName;
     }
 
-    public String getPassWord () {
-        return passWord;
+    public String getPassword () {
+        return password;
     }
 
-    public void setPassWord (String passWord) {
-        this.passWord = passWord;
+    public void setPassword (String password) {
+        this.password = password;
     }
 
     public String getRoleId () {
@@ -79,7 +78,7 @@ public class User {
         return "User{" +
                 "userId='" + userId + '\'' +
                 ", userName='" + userName + '\'' +
-                ", passWord='" + passWord + '\'' +
+                ", passWord='" + password + '\'' +
                 ", status='" + status + '\'' +
                 ", roleId='" + roleId + '\'' +
                 ", deptId='" + deptId + '\'' +

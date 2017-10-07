@@ -3,6 +3,7 @@ package com.syl.demo.action;
 
 import com.syl.demo.pojo.User;
 import com.syl.demo.service.UserService;
+import com.syl.demo.util.RequestUtil;
 import com.syl.demo.util.SpringContextUtil;
 import org.apache.log4j.Logger;
 
@@ -87,7 +88,8 @@ public class UserAction extends HttpServlet {
         }
 
         if("add".equals(method)) {
-            User user = getUserByRequest(request);
+            User user = (User) RequestUtil.getObjectByRequest(request,User.class);
+           // User user = getUserByRequest(request);
             if (userService.createUser(user)) {
 
                 resultStr = user.getUserName() + " 创建成功！";
@@ -145,7 +147,7 @@ public class UserAction extends HttpServlet {
         User user = new User();
         user.setUserId(user_id);
         user.setUserName(user_name);
-        user.setPassWord(password);
+        user.setPassword(password);
         user.setDeptId(dept_id);
         user.setRoleId(role_id);
         user.setStatus("0");

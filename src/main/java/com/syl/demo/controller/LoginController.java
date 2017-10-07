@@ -39,9 +39,9 @@ public class LoginController {
         User u =loginService.findUser(user_id,password);
         if(u!=null){
             logger.info(u.getUserId()+" is exist!!");
-            model.addAttribute("user", u);
-            //request.setAttribute("user",
-                   // u);
+            //model.addAttribute("user", u);
+            request.setAttribute("user",
+                    u);
 
             try {
                 request.getRequestDispatcher("back/index.jsp").forward(request, response);

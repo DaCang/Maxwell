@@ -23,7 +23,7 @@ public class UserServiceTest {
         User user = new User();
         user.setUserId("test");
         user.setUserName("测试");
-        user.setPassWord("test");
+        user.setPassword("test");
         user.setRoleId("001");
         user.setDeptId("20170919001");
         user.setStatus("0");

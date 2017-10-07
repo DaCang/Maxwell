@@ -53,6 +53,7 @@
                   <div class="layui-input-inline input-custom-width">
                     <input type="text" id="user_id" name="user_id" value="" lay-verify="required" autocomplete="off"
                            placeholder="请输入登陆账号" class="layui-input">
+                    <input name="status" value="0" style="display: none" >
                   </div>
                 </div>
                 <div class="layui-form-item">
@@ -99,6 +100,7 @@
                   </div>
                   <div class="layui-form-mid layui-word-aux"></div>
                 </div>
+
 
                 <%--<div class="layui-form-item">
                   <label class="layui-form-label">再次确认</label>

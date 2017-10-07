@@ -16,7 +16,7 @@ public class LoginService extends  CommonService {
 
         User user = new User();
         user.setUserId(user_id);
-        user.setPassWord(passWord);
+        user.setPassword(passWord);
         User u;
         u = loginDaoImp.findUser(user);
 
