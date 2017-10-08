@@ -61,13 +61,13 @@ public class NoticeService  extends CommonService {
         File directory = new File("");// 参数为空
         String courseFile = null;
         try {
-            courseFile = directory.getCanonicalPath().replace("bin","webapps")+"\\spring-demo-02\\notice\\";
+            courseFile = directory.getCanonicalPath().replace("bin","webapps")+"\\MaxWell\\notice\\";
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
         }
         //return courseFile;
-        return "D:\\ideaWORK\\spring-demo-02\\src\\main\\webapp\\notice"; //IDEA下打开
+        return "D:\\ideaWORK\\MaxWell\\src\\main\\webapp\\notice"; //IDEA下打开
     }
     public List<Notice> getNoticeObject () {
 
