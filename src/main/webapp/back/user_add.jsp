@@ -179,7 +179,7 @@ layui.use(['element', 'form', 'upload'], function(){
     });
     var param = data.field;
    // alert(param);
-    jq.post('/userAction.do?method=add',param,function(data){
+    jq.post('/user/add.con',param,function(data){
         var result = eval("("+data+")");
       if(result.code == 200){
         layer.close(loading);

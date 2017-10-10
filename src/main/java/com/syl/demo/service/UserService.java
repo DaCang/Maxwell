@@ -1,5 +1,6 @@
 package com.syl.demo.service;
 
+import com.syl.demo.dao.UserDao;
 import com.syl.demo.dao.imp.NoticeDaoImp;
 import com.syl.demo.dao.imp.UserDaoImp;
 import com.syl.demo.pojo.User;
@@ -15,6 +16,8 @@ public class UserService extends  CommonService {
     @Autowired
     UserDaoImp userDaoImp;
 
+    @Autowired
+    UserDao userDao;
 
 
     public String getUserInfo(String user_id,String role_id){
@@ -53,7 +56,7 @@ public class UserService extends  CommonService {
     }
 
 
-    public  String getUserInfoByPage(int page){
+    public  List<User> getUserInfoByPage1(int page){
        // userDaoImp = new UserDaoImp();//测试的时候打开
         List userList;
         int aPagSize=5;
@@ -62,10 +65,24 @@ public class UserService extends  CommonService {
         start=(page-1)*aPagSize;
         end=aPagSize;
 
-        userList = userDaoImp.getUserInfoByPage(start,end);//根据user_id查询用户信息
+       // userList = userDaoImp.getUserInfoByPage(start,end);//根据user_id查询用户信息
+
+        //return ObjectToJson(userList);
+        return userDao.getUserInfoByPage(start,end);
+
+    }
+    public  String getUserInfoByPage(int page){
+        // userDaoImp = new UserDaoImp();//测试的时候打开
+        List userList;
+        int aPagSize=5;
+        int start=0;
+        int end=0;
+        start=(page-1)*aPagSize;
+        end=aPagSize;
+
+         userList = userDaoImp.getUserInfoByPage(start,end);//根据user_id查询用户信息
 
         return ObjectToJson(userList);
-
     }
 
     @Override

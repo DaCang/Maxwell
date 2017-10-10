@@ -31,10 +31,10 @@ To change this template use File | Settings | File Templates.
       //href="back/user_list.jsp"
       $(function() {
 
-          var user_list_url="back/user_list.jsp?user_id="+user_id+"&role_id="+role_id;
+         // var user_list_url="back/user_list.jsp?user_id="+user_id+"&role_id="+role_id;
 
           //alert(user_list_url)
-          $("#user_manager").attr("href",user_list_url);
+         // $("#user_manager").attr("href",user_list_url);
       });
 
   </script>
@@ -95,7 +95,7 @@ To change this template use File | Settings | File Templates.
                 </a>
               </li>
               <li class="layui-nav-item first-item">
-                <a id="user_manager"  target="main">
+                <a id="user_manager" href="user/user_list.con" target="main">
                   <i class="layui-icon">&#xe609;</i>
                   <cite>用户管理</cite>
                 </a>

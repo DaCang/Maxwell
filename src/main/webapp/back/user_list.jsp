@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
     String user_id = (String) request.getAttribute("user_id");
     String role_id = (String) request.getAttribute("role_id");
@@ -20,12 +21,12 @@
     <link rel="stylesheet" href="./css/global.css">
     <script src="/jquery/jquery.js"></script>
     <script type="text/javascript" src="./layui/layui.js"></script>
-    <script type="text/javascript" src="./js/user.js"></script>
+    <%--<script type="text/javascript" src="./js/user.js"></script>--%>
     <script>
         var user_id ='<%=user_id%>';
         var role_id ='<%=role_id%>';
-        user_id="admin";
-        role_id="system";
+        //user_id="admin";
+        //role_id="system";
     </script>
 </head>
 <body>
@@ -54,6 +55,31 @@
 
                     <tbody id="userInfo">
 
+                    <c:forEach items="${userList}" var="list"  varStatus="count">
+                        <tr >
+                            <td>${count.count}</td>
+                            <td>${list.userId}</td>
+                            <td>${list.userName}</td>
+
+                            <td>${list.password}</td>
+                          <%-- <c:if  test="${list.roleId=='system'}">
+                                <td>系统管理员</td>
+                            </c:if>--%>
+
+                            <c:choose>
+                                <c:when test="${list.roleId== 'system'}">
+                                    <td>系统管理员</td>
+                                </c:when>
+                                <c:when test="${list.roleId== '001'}">
+                                    <td>普通用户</td>
+                                </c:when>
+                            </c:choose>
+                            <%--<td>${list.roleId}</td>--%>
+                            <td>${list.deptId}</td>
+                            <td>0</td>
+
+                        </tr>
+                    </c:forEach>
                     </tbody>
                     <thead>
                     <tr>
@@ -67,18 +93,7 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    layui.use(['element', 'layer','laypage', 'form'], function(){
-        var element = layui.element()
-            ,jq = layui.jquery
-            ,form = layui.form()
-            ,laypage = layui.laypage;
 
-        //删除
-
-
-    })
-</script>
 
 </body>
 </html>

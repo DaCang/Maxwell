@@ -26,13 +26,13 @@ public class RequestUtil {
 
             String filedName=field.getName();
             Class filedType = field.getType();
-            System.out.println(filedName);//属性的名字+回车  .);
-            System.out.println(filedType);
+            //System.out.println(filedName);//属性的名字+回车  .);
+            //System.out.println(filedType);
            String methodName =upCase(filedName);
             try {
                 Method method=c.getDeclaredMethod(methodName,filedType);
                 try {
-                    method.invoke(o,request.getParameter(stringInsert_(field.getName())));
+                    method.invoke(o,request.getParameter(stringInsert_(filedName)));
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                 } catch (InvocationTargetException e) {
@@ -46,30 +46,40 @@ public class RequestUtil {
 
         return o;
     }
-    public static String upCase(String name) {
-        name = name.substring(0, 1).toUpperCase() + name.substring(1);
-        return  "set"+name;
+
+    /**
+     *
+     * @param filedName 对象的属性
+     *                  如User对象的userId属性
+     * @return 返回对象属性相对应的set方法名称
+     *         如User对象的userId属性对应的setUserId方法名称
+     */
+    public static String upCase(String filedName) {
+
+        return  "set"+filedName.substring(0, 1).toUpperCase() + filedName.substring(1);
 
     }
     /**
      *
-     * @param s 传入一个字符串
-     * @return 返回一个字符串中的大写字母
+     * @param filedName 对象的属性
+     *                  如User对象的userId属性
+     * @return 返回对象属性相对应的数据库列名或jsp中input标签的name
+     *          如User对象的userId属性对应的user表的user_id和jsp中的input name="user_id"
      */
-    public static String stringInsert_(String s) {
+    public static String stringInsert_(String filedName) {
 
 
         StringBuilder sb = new StringBuilder();
-        sb.append(s);
-        for (int i = 0; i < s.length(); i++) {
+        sb.append(filedName);
+        for (int i = 0; i < filedName.length(); i++) {
 
-            if (Character.isUpperCase(s.charAt(i))) {
+            if (Character.isUpperCase(filedName.charAt(i))) {
 
                 sb.insert(i, "_");
                // System.out.println(i);
             }
         }
-       System.out.println(sb.toString().toLowerCase());
+       //System.out.println(sb.toString().toLowerCase());
         return sb.toString().toLowerCase();
     }
 

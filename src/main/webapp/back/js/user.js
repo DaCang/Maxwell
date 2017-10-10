@@ -165,7 +165,7 @@ function setData(data,page) {
             "<td>"+(i+1+(page-1)*5)+"</td>" +
             "<td>"+list[i].userId+"</td>" +
             "<td>"+list[i].userName+"</td>" +
-            "<td>"+list[i].passWord+"</td>" +
+            "<td>"+list[i].password+"</td>" +
             "<td>"+list[i].roleId+"</td>" +
             "<td>"+list[i].deptId+"</td>" +
             " <td style=\"text-align: center;\">\n" +
