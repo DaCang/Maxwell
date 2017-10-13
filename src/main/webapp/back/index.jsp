@@ -61,7 +61,7 @@ To change this template use File | Settings | File Templates.
           </li>
         </ul>
         <div class="top_admin_user">
-          <a href="/" target="_blank">网站首页</a> |<a class="update_cache" href="javascript:void(0)">更新缓存</a> | <a class="logout_btn" href="javascript:void(0)">退出</a>
+          ${user.userName}，欢迎您<a href="/" target="_blank">网站首页</a> |<a class="update_cache" href="javascript:void(0)">更新缓存</a> | <a class="logout_btn" href="javascript:void(0)">退出</a>
         </div>
       </div>
     </div>
@@ -71,12 +71,12 @@ To change this template use File | Settings | File Templates.
               <li class="layui-nav-item layui-nav-title">
                 <a>个人信息</a>
               </li>
-              <li class="layui-nav-item first-item layui-this">
-                <a href="back/home.html" target="main">
-                  <i class="layui-icon">&#xe638;</i>
-                  <cite>首页面板</cite>
-                </a>
-              </li>
+                  <li class="layui-nav-item first-item layui-this">
+                    <a href="back/home.html" target="main">
+                      <i class="layui-icon">&#xe638;</i>
+                      <cite>首页面板</cite>
+                    </a>
+                  </li>
               <li class="layui-nav-item ">
                 <a href="back/form.html" target="main">
                   <i class="layui-icon">&#xe642;</i>

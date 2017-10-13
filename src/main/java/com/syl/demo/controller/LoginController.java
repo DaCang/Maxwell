@@ -29,30 +29,21 @@ public class LoginController {
 
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public void   login(HttpServletRequest request, Model model,
-               String user_id,String password,
+    public String   login(HttpServletRequest request, Model model,
+               User user,
                HttpServletResponse response)
     throws IOException{
 
-        logger.info(user_id);
-        logger.info(password);
-        User u =loginService.findUser(user_id,password);
+        logger.info(user.getUserId());
+        logger.info(user.getPassword());
+        User u =loginService.findUser(user);
         if(u!=null){
             logger.info(u.getUserId()+" is exist!!");
-            //model.addAttribute("user", u);
-            request.setAttribute("user",
-                    u);
-
-            try {
-                request.getRequestDispatcher("back/index.jsp").forward(request, response);
-            } catch (ServletException e) {
-                e.printStackTrace();
-            }
-
-
+            model.addAttribute("user", u);
+            return "index";
 
         }else{
-            String msg = user_id+" is not  exist!!";
+            String msg = user.getUserId()+" is not  exist!!";
             logger.info(msg);
             //response.setStatus(550);
             request.setAttribute("msg",
@@ -63,6 +54,7 @@ public class LoginController {
             } catch (ServletException e) {
                 e.printStackTrace();
             }
+            return "";
             // response.sendRedirect("/error/userNotExist.jsp");
 
         }
