@@ -20,10 +20,10 @@ To change this template use File | Settings | File Templates.
 <head>
   <meta charset="UTF-8">
     <title>用户管理系统(User Manager System)</title>
-    <link rel="stylesheet" href="back/layui/css/layui.css">
-    <link rel="stylesheet" href="back/css/global.css">
+    <link rel="stylesheet" href="back/static/layui/css/layui.css">
+    <link rel="stylesheet" href="back/static/css/global.css">
     <script src="/jquery/jquery.js"></script>
-    <script type="text/javascript" src="back/layui/layui.js"></script>
+    <script type="text/javascript" src="back/static/layui/layui.js"></script>
    <script>
       var user_id ='<%=user.getUserId()%>';
       var role_id ='<%=user.getRoleId()%>';
@@ -44,7 +44,7 @@ To change this template use File | Settings | File Templates.
     <div class="layui-header header">
       <div class="layui-main">
         <a class="logo" href="/" target="_self">
-          <img src="back/images/logo-top.png" alt="User Manager" >
+          <img src="back/static/images/logo-top.png" alt="User Manager" >
         </a>
         <ul class="layui-nav top-nav-container">
           <li class="layui-nav-item layui-this">

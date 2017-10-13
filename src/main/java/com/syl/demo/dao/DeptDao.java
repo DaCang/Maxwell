@@ -4,7 +4,7 @@ import com.syl.demo.pojo.Dept;
 
 import java.util.List;
 
-public interface DeptDao {
+public interface DeptDao extends  BaseDao {
 
 
 

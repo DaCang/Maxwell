@@ -17,4 +17,9 @@ public class RoleDaoImp implements RoleDao {
     public List<Role> getRoleInfo (Role role) {
         return roleDao.getRoleInfo(role);
     }
+
+    @Override
+    public List findAllList () {
+        return null;
+    }
 }

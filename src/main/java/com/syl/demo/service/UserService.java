@@ -1,8 +1,12 @@
 package com.syl.demo.service;
 
+import com.syl.demo.dao.DeptDao;
+import com.syl.demo.dao.RoleDao;
 import com.syl.demo.dao.UserDao;
 import com.syl.demo.dao.imp.NoticeDaoImp;
 import com.syl.demo.dao.imp.UserDaoImp;
+import com.syl.demo.pojo.Dept;
+import com.syl.demo.pojo.Role;
 import com.syl.demo.pojo.User;
 import com.syl.demo.util.SpringXmlContextUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +23,11 @@ public class UserService extends  CommonService {
     @Autowired
     UserDao userDao;
 
+    @Autowired
+    DeptDao  deptDao;
+
+    @Autowired
+    RoleDao roleDao;
 
     public String getUserInfo(String user_id,String role_id){
         //userDaoImp = new UserDaoImp();//测试的时候打开
@@ -88,5 +97,15 @@ public class UserService extends  CommonService {
     @Override
     public String ObjectToJson (Object object) {
         return super.ObjectToJson(object);
+    }
+
+
+    public List<Dept>  getDeptList(){
+
+        return deptDao.findAllList();
+    }
+    public List<Role>  getRoleList(){
+
+        return roleDao.findAllList();
     }
 }

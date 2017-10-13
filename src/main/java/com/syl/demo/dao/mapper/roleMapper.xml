@@ -15,4 +15,11 @@
     </select>
 
 
+    <select id="findAllList" resultType="role">
+        select
+            *
+        from role
+
+    </select>
+
 </mapper>

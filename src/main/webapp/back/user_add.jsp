@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
   String user_id = (String) request.getAttribute("user_id");
   String role_id = (String) request.getAttribute("role_id");
@@ -16,11 +17,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Lz_CMS-后台管理中心</title>
-  <link rel="stylesheet" href="./layui/css/layui.css">
-  <link rel="stylesheet" href="./css/global.css">
-  <script src="/jquery/jquery.js"></script>
-  <script type="text/javascript" src="./layui/layui.js"></script>
-  <script type="text/javascript" src="./js/user_add.js"></script>
+  <link rel="stylesheet" href="/back/static/layui/css/layui.css">
+  <%--<link rel="stylesheet" href="/back/static/css/global.css">--%>
+  <script type="text/javascript" src="/back/static/layui/layui.js"></script>
+  <%--<script type="text/javascript" src="/back/static/js/user_add.js"></script>--%>
   <script>
       var user_id ='<%=user_id%>';
       var role_id ='<%=role_id%>';
@@ -78,28 +78,43 @@
                   </div>
                 </div>
 
-
-                <div class="layui-form-item">
-                  <label class="layui-form-label">所在部门</label>
-                  <div class="layui-input-inline input-custom-width">
-                    <select id="dept_id" name="dept_id" lay-verify="">
-
-
-                    </select>
-
+                  <div class="layui-form-item">
+                      <label class="layui-form-label">行内选择框</label>
+                      <div class="layui-input-inline">
+                          <select name="quiz1">
+                              <option value="">请选择省</option>
+                              <option value="浙江" selected="">浙江省</option>
+                              <option value="你的工号">江西省</option>
+                              <option value="你最喜欢的老师">福建省</option>
+                          </select>
+                      </div>
                   </div>
-                  <div class="layui-form-mid layui-word-aux"></div>
-                </div>
+                <%--<div class="layui-form-item">
+                  <label class="layui-form-label">所在部门</label>
+                    <select id="dept_id" name="dept_id" >
 
-                <div class="layui-form-item">
+                        <c:forEach items="${deptList}" var="list"  varStatus="count">
+                            <option value="${list.deptId}" >
+                                ${list.deptName}
+                            </option>
+                        </c:forEach>
+                    </select>
+                  <div class="layui-form-mid layui-word-aux"></div>
+                </div>--%>
+
+                <%--<div class="layui-form-item">
                   <label class="layui-form-label">权限设置</label>
                   <div class="layui-input-inline input-custom-width">
                     <select  id="role_id" name="role_id" lay-verify="">
-
+                        <c:forEach items="${roleList}" var="list"  varStatus="count">
+                            <option value="${list.roleId}" >
+                                ${list.roleName}
+                            </option>
+                        </c:forEach>
                     </select>
                   </div>
                   <div class="layui-form-mid layui-word-aux"></div>
-                </div>
+                </div>--%>
 
 
                 <%--<div class="layui-form-item">
@@ -151,7 +166,7 @@
       </div>
     </div>
 </div>
-<script type="text/javascript">
+<%--<script type="text/javascript">
 layui.use(['element', 'form', 'upload'], function(){
   var element = layui.element()
   ,form = layui.form()
@@ -196,7 +211,6 @@ layui.use(['element', 'form', 'upload'], function(){
   });
   
 })
-</script>
+</script>--%>
 </body>
 </html>
-

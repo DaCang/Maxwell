@@ -34,8 +34,8 @@ public class LoginController {
                HttpServletResponse response)
     throws IOException{
 
-        System.out.println(user_id);
-        System.out.println(password);
+        logger.info(user_id);
+        logger.info(password);
         User u =loginService.findUser(user_id,password);
         if(u!=null){
             logger.info(u.getUserId()+" is exist!!");

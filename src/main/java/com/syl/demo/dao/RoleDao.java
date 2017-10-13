@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * role 表操作接口
  */
-public interface RoleDao {
+public interface RoleDao extends  BaseDao {
 
     List<Role> getRoleInfo(Role role);
 }

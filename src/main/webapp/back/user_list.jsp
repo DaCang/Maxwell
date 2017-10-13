@@ -17,10 +17,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Lz_CMS-后台管理中心</title>
-    <link rel="stylesheet" href="./layui/css/layui.css">
-    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="/back/static/layui/css/layui.css">
+    <link rel="stylesheet" href="/back/static/css/global.css">
     <script src="/jquery/jquery.js"></script>
-    <script type="text/javascript" src="./layui/layui.js"></script>
+    <script type="text/javascript" src="/back/static/layui/layui.js"></script>
     <%--<script type="text/javascript" src="./js/user.js"></script>--%>
     <script>
         var user_id ='<%=user_id%>';
@@ -33,7 +33,7 @@
 <div class="layui-tab layui-tab-brief main-tab-container">
     <ul class="layui-tab-title main-tab-title">
         <a href="user_list.jsp"><li class="layui-this">账号列表</li></a>
-        <a href="user_add.jsp"><li>添加账号</li></a>
+        <a href="/user/select_list.con"><li>添加账号</li></a>
         <div class="main-tab-item">账号管理</div>
     </ul>
     <div class="layui-tab-content">

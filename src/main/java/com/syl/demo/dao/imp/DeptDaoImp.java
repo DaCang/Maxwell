@@ -25,4 +25,10 @@ public class DeptDaoImp implements DeptDao {
     public boolean createDept (Dept dept) {
         return true;
     }
+
+
+    @Override
+    public List<Object> findAllList () {
+        return null;
+    }
 }

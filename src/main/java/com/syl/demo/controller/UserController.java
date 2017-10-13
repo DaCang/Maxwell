@@ -84,4 +84,28 @@ public class UserController {
 
         return "user_list";
     }
+
+    /**
+     *  加载部门,和权限下拉框
+     * @param request
+     * @param model
+     * @param response
+     * @return
+     */
+    @RequestMapping("/select_list")
+    public String getSelectList (HttpServletRequest request, Model model,
+                                     HttpServletResponse response) {
+
+
+
+        List deptList = userService.getDeptList();
+        List roleList = userService.getRoleList();
+
+        System.out.println(deptList);
+        System.out.println(roleList);
+        model.addAttribute("deptList",deptList);
+        model.addAttribute("roleList",roleList);
+
+        return "user_add";
+    }
 }
