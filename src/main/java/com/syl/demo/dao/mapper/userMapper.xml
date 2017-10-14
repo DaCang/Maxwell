@@ -36,6 +36,14 @@
             LIMIT  #{start}, #{row_count}
         </if>
     </select>
+    <!-- 获得用户信息  分页-->
+    <select id="pageCount"   resultType="page" >
+        select
+       count(1) AS "pageCount"
+        from user <where>
+        status = '0'
+    </where>
+    </select>
 
 
     <!--创建用户-->

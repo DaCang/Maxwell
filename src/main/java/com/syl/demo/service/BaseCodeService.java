@@ -1,7 +1,7 @@
 package com.syl.demo.service;
 
-import com.syl.demo.dao.imp.DeptDaoImp;
-import com.syl.demo.dao.imp.RoleDaoImp;
+import com.syl.demo.dao.DeptDao;
+import com.syl.demo.dao.RoleDao;
 import com.syl.demo.pojo.Dept;
 import com.syl.demo.pojo.Role;
 import com.syl.demo.util.FileUtil;
@@ -19,9 +19,9 @@ import java.util.List;
 public class BaseCodeService extends  CommonService {
 
     @Autowired
-    DeptDaoImp deptDaoImp;
+    DeptDao deptDao;
     @Autowired
-    RoleDaoImp roleDaoImp;
+    RoleDao roleDao;
 
     private  final  String fileNameDept="deptBaseCode.json";
     private  final  String fileNameRole="roleBaseCode.json";
@@ -37,7 +37,7 @@ public class BaseCodeService extends  CommonService {
         List<Dept> deptList;
        // deptDaoImp = new DeptDaoImp();//测试的时候打开
         Dept dept = new Dept();
-        deptList = deptDaoImp.getDeptInfo(dept);
+        deptList = deptDao.getDeptInfo(dept);
         String noticeStr = ObjectToJson(deptList);
         System.out.println(noticeStr);
         //String noticeStr = ObjectToJson(getNoticeObject ());
@@ -52,7 +52,7 @@ public class BaseCodeService extends  CommonService {
 
         //roleDaoImp = new RoleDaoImp();//测试时打开
         Role role = new Role();
-        roleList = roleDaoImp.getRoleInfo(role);
+        roleList = roleDao.getRoleInfo(role);
         String roleStr = ObjectToJson(roleList);
         System.out.println(roleStr);
         //String noticeStr = ObjectToJson(getNoticeObject ());

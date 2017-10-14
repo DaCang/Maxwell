@@ -1,6 +1,6 @@
 package com.syl.demo.service;
 
-import com.syl.demo.dao.imp.DeptDaoImp;
+import com.syl.demo.dao.DeptDao;
 import com.syl.demo.pojo.Dept;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class DeptService extends CommonService {
 
     @Autowired
-    DeptDaoImp deptDaoImp;
+    DeptDao deptDao;
 
 
     @Override
@@ -22,12 +22,9 @@ public class DeptService extends CommonService {
         Dept dept = new Dept();
         dept.setDeptId(dept_id);
 
-        return ObjectToJson(deptDaoImp.getDeptInfo(dept));
+        return ObjectToJson(deptDao.getDeptInfo(dept));
     }
 
-    public void setDeptDaoImp (DeptDaoImp deptDaoImp) {
-        this.deptDaoImp = deptDaoImp;
-    }
 
 
 
@@ -36,7 +33,7 @@ public class DeptService extends CommonService {
        if(!role_id.contains("system")){
            dept.setDeptId(dept_id);
        }
-        return ObjectToJson(deptDaoImp.getDeptInfo(dept));
+        return ObjectToJson(deptDao.getDeptInfo(dept));
 
 
 

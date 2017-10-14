@@ -1,6 +1,7 @@
 package com.syl.demo.controller;
 
 import com.syl.demo.action.UserAction;
+import com.syl.demo.pojo.Page;
 import com.syl.demo.pojo.User;
 import com.syl.demo.service.UserService;
 import com.syl.demo.util.RequestUtil;
@@ -70,19 +71,19 @@ public class UserController {
         }
     }
     @RequestMapping("/user_list")
-    public String getUserInfoByPage (HttpServletRequest request, Model model, String page,
+    public void getUserInfoByPage (HttpServletRequest request, Model model, int page,
                         HttpServletResponse response) {
 
+       // List<User> userList = userService.getUserInfoByPage1(page);
 
-        page="1";
-        System.out.println(page);
-        List<User> userList = userService.getUserInfoByPage1(Integer.valueOf(page));
-
-        logger.info(userList);
+        //logger.info(userList);
         //ResponseUtil.setResponse(response,userInfo);
-        model.addAttribute("userList", userList);
+        //model.addAttribute("userList", userList);
+        String userInfo = userService.getUserInfoByPage(page);
 
-        return "user_list";
+        logger.info(userInfo);
+        ResponseUtil.setResponse(response,userInfo);
+        //return "user_list";
     }
 
     /**
@@ -108,4 +109,24 @@ public class UserController {
 
         return "user_add";
     }
+
+    /**
+     *  加载部门,和权限下拉框
+     * @param request
+     * @param model
+     * @param response
+     * @return
+     */
+    @RequestMapping("/pageCount")
+    public  @ResponseBody
+    Page pageCount (HttpServletRequest request, Model model,
+                    HttpServletResponse response) {
+
+
+
+      //int count=userService.pageCount();
+        //model.addAttribute("pageCount",1);
+        return userService.pageCount();
+    }
+
 }

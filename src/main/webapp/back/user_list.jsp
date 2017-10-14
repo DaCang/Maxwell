@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="/back/static/css/global.css">
     <script src="/jquery/jquery.js"></script>
     <script type="text/javascript" src="/back/static/layui/layui.js"></script>
-    <%--<script type="text/javascript" src="./js/user.js"></script>--%>
+    <script type="text/javascript" src="/back/static/js/user.js"></script>
     <script>
         var user_id ='<%=user_id%>';
         var role_id ='<%=role_id%>';
@@ -55,16 +55,16 @@
 
                     <tbody id="userInfo">
 
-                    <c:forEach items="${userList}" var="list"  varStatus="count">
+                   <%-- <c:forEach items="${userList}" var="list"  varStatus="count">
                         <tr >
                             <td>${count.count}</td>
                             <td>${list.userId}</td>
                             <td>${list.userName}</td>
 
                             <td>${list.password}</td>
-                          <%-- <c:if  test="${list.roleId=='system'}">
+                          &lt;%&ndash; <c:if  test="${list.roleId=='system'}">
                                 <td>系统管理员</td>
-                            </c:if>--%>
+                            </c:if>&ndash;%&gt;
 
                             <c:choose>
                                 <c:when test="${list.roleId== 'system'}">
@@ -74,12 +74,12 @@
                                     <td>普通用户</td>
                                 </c:when>
                             </c:choose>
-                            <%--<td>${list.roleId}</td>--%>
+                            &lt;%&ndash;<td>${list.roleId}</td>&ndash;%&gt;
                             <td>${list.deptId}</td>
                             <td>0</td>
 
                         </tr>
-                    </c:forEach>
+                    </c:forEach>--%>
                     </tbody>
                     <thead>
                     <tr>

@@ -95,7 +95,7 @@ To change this template use File | Settings | File Templates.
                 </a>
               </li>
               <li class="layui-nav-item first-item">
-                <a id="user_manager" href="user/user_list.con" target="main">
+                <a id="user_manager" href="back/user_list.jsp" target="main">
                   <i class="layui-icon">&#xe609;</i>
                   <cite>用户管理</cite>
                 </a>
