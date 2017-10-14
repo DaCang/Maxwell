@@ -1,8 +1,6 @@
 package com.syl.demo.service;
 
-import com.alibaba.fastjson.JSON;
 import com.syl.demo.dao.NoticeDao;
-import com.syl.demo.dao.imp.NoticeDaoImp;
 import com.syl.demo.pojo.Notice;
 import com.syl.demo.util.FileUtil;
 import com.syl.demo.util.MybatisUtil;
@@ -22,28 +20,20 @@ import java.util.Map;
 public class NoticeService  extends CommonService {
 
     @Autowired
-    NoticeDaoImp noticeDaoImp;
+    NoticeDao noticeDao;
     private  final  String fileName="notice.json";
 
     public  void work(){
         getWork();
     }
 
-    public NoticeDaoImp getNoticeDaoImp () {
-        return noticeDaoImp;
-    }
-
-    public void setNoticeDaoImp (NoticeDaoImp noticeDaoImp) {
-        this.noticeDaoImp = noticeDaoImp;
-    }
-
 
 
     public void getWork(){
         // file(内存)----输入流---->【程序】----输出流---->file(内存)
-        noticeDaoImp = new NoticeDaoImp();//测试的时候打开
+       // noticeDaoImp = new NoticeDaoImp();//测试的时候打开
         List<Notice> noticeList;
-        noticeList = noticeDaoImp.getNoticeObject();
+        noticeList = noticeDao.getNoticeObject();
         this.setString(noticeList);
         String noticeStr = ObjectToJson(noticeList);
         System.out.println(noticeStr);

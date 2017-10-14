@@ -1,5 +1,6 @@
-
+var pageNum;
 $(function() {
+    getPageCount();
     layui.use(['element', 'layer','laypage', 'form'], function(){
         var element = layui.element()
             ,jq = layui.jquery
@@ -13,7 +14,7 @@ $(function() {
         laypage({
             cont: 'page'
             ,skip: true
-            ,pages: 100 //总页数
+            ,pages: pageNum //总页数
             ,groups: 5 //连续显示分页数
             ,curr: 1
             ,jump: function(e, first){ //触发分页后的回调
@@ -32,13 +33,12 @@ $(function() {
                     }
 
                  );*/
+
                 loading = layer.load(2, {
                     shade: [0.2,'#000'] //0.2透明度的白色背景
                 });
-                jq.get('/userAction.do?method=list',
+                jq.get('/user/user_list.con',
                     {
-                        'user_id':user_id,
-                        'role_id':role_id,
                         'page':e.curr
 
                     },
@@ -49,7 +49,7 @@ $(function() {
                             return false;
                         }
                         var result = eval("("+data+")");
-                        //alert(result);
+                       // alert(result);
                         layer.close(loading);
                         setData(result,e.curr)
 
@@ -166,7 +166,7 @@ function setData(data,page) {
             "<td>"+list[i].userId+"</td>" +
             "<td>"+list[i].userName+"</td>" +
             "<td>"+list[i].password+"</td>" +
-            "<td>"+list[i].roleId+"</td>" +
+            "<td>"+getRoleName(list[i].roleId)+"</td>" +
             "<td>"+list[i].deptId+"</td>" +
             " <td style=\"text-align: center;\">\n" +
             " <a href=\"./category_add.html\" class=\"layui-btn layui-btn-small\" title=\"编辑\"><i class=\"layui-icon\"></i></a>\n" +
@@ -214,5 +214,32 @@ function del(obj) {
 
         //loadUserInfo();
     })
+}
+
+function getRoleName(roleId){
+    if(roleId == 'system'){
+        return '系统管理员'
+    }else{
+        return '普通用户'
+    }
+}
+
+function getPageCount() {
+    //alert(111);
+    layui.use(['layer'], function () {
+        var jq = layui.jquery
+
+
+
+            jq.post('/user/pageCount.con',
+                function (data) {
+                if (data == null || data == "") {
+
+                    layer.msg("服务器错误,请联系管理员", {icon: 2, anim: 6, time: 1000});
+                    return false;
+                }
+                pageNum=data.pageNum
+            });
+        });
 }
 

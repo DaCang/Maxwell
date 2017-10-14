@@ -1,7 +1,6 @@
 package com.syl.demo.util;
 import java.io.Reader;
 
-import com.syl.demo.dao.imp.UserDaoImp;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;

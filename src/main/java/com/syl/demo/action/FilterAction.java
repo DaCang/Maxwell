@@ -37,7 +37,7 @@ public class FilterAction implements Filter {
                 param = URLDecoder.decode(param, "UTF-8");
                 String originalURL = requestUrl +"?"+ param;
 
-                logger.info("originalURL:"+originalURL);
+               // logger.info("originalURL:"+originalURL);
                 String sqlParam = param;
                 //添加sql注入的判断
                 //if(requestURL.endsWith("/askQuestion.html") || requestURL.endsWith("/member/answer.html")){
@@ -110,12 +110,22 @@ public class FilterAction implements Filter {
     //需要增加通配，过滤大小写组合
     public String cleanSQLInject(String src) {
         String temp =src;
-        src = src.replaceAll("insert", "forbidI")
-                .replaceAll("select", "forbidS")
-                .replaceAll("update", "forbidU")
-                .replaceAll("delete", "forbidD")
-                .replaceAll("and", "forbidA")
-                .replaceAll("or", "forbidO");
+        if(src.contains("password")){
+            src = src.replaceAll("insert", "forbidI")
+                    .replaceAll("select", "forbidS")
+                    .replaceAll("update", "forbidU")
+                    .replaceAll("delete", "forbidD")
+                    .replaceAll("and", "forbidA");
+
+        }else{
+            src = src.replaceAll("insert", "forbidI")
+                    .replaceAll("select", "forbidS")
+                    .replaceAll("update", "forbidU")
+                    .replaceAll("delete", "forbidD")
+                    .replaceAll("and", "forbidA")
+                    .replaceAll("or", "forbidO");
+        }
+
 
         if(!temp.equals(src)){
             logger.info("输入信息存在SQL攻击！");

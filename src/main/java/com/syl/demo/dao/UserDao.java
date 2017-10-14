@@ -3,10 +3,12 @@ package com.syl.demo.dao;
 
 import com.syl.demo.pojo.User;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public interface UserDao {
+@Repository("userDao")
+public interface UserDao extends  BaseDao {
 
 
     Boolean findUser();
