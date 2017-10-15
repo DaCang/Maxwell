@@ -2,27 +2,48 @@ package com.syl.demo.pojo;
 
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
-public class Page {
+public class Page<T>{
 
-    String pageCount;//总条数
+    int count;//总条数
 
-    String pageNum;//页数
+    int pageCount;//总页数
 
-    public String getPageCount () {
-        return pageCount;
+    int pageNum;//当前页数
+
+    List<T> list;//分页实体中包含的list
+
+    public int getCount () {
+        return count;
     }
 
-    public void setPageCount (String pageCount) {
+    public void setCount (int count) {
+        this.count = count;
+    }
+
+    public int getPageCount () {
+        return (count-1)/5+1;
+    }
+
+    public void setPageCount (int pageCount) {
         this.pageCount = pageCount;
     }
 
-    public String getPageNum () {
-
-        return String.valueOf(Integer.valueOf(pageCount)/5+1);
+    public int getPageNum () {
+        return pageNum;
     }
 
-    public void setPageNum (String pageNum) {
+    public void setPageNum (int pageNum) {
         this.pageNum = pageNum;
+    }
+
+    public List<T> getList () {
+        return list;
+    }
+
+    public void setList (List<T> list) {
+        this.list = list;
     }
 }

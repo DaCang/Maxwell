@@ -78,18 +78,8 @@
                   </div>
                 </div>
 
-                  <div class="layui-form-item">
-                      <label class="layui-form-label">行内选择框</label>
-                      <div class="layui-input-inline">
-                          <select name="quiz1">
-                              <option value="">请选择省</option>
-                              <option value="浙江" selected="">浙江省</option>
-                              <option value="你的工号">江西省</option>
-                              <option value="你最喜欢的老师">福建省</option>
-                          </select>
-                      </div>
-                  </div>
-                <%--<div class="layui-form-item">
+
+                <div class="layui-form-item">
                   <label class="layui-form-label">所在部门</label>
                     <select id="dept_id" name="dept_id" >
 
@@ -100,9 +90,9 @@
                         </c:forEach>
                     </select>
                   <div class="layui-form-mid layui-word-aux"></div>
-                </div>--%>
+                </div>
 
-                <%--<div class="layui-form-item">
+                <div class="layui-form-item">
                   <label class="layui-form-label">权限设置</label>
                   <div class="layui-input-inline input-custom-width">
                     <select  id="role_id" name="role_id" lay-verify="">
@@ -114,7 +104,7 @@
                     </select>
                   </div>
                   <div class="layui-form-mid layui-word-aux"></div>
-                </div>--%>
+                </div>
 
 
                 <%--<div class="layui-form-item">

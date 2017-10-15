@@ -70,8 +70,9 @@ public class UserController {
             ResponseUtil.setResponse(response, ResponseUtil.setCodeAndMsg(500, resultStr));
         }
     }
-    @RequestMapping("/user_list")
-    public void getUserInfoByPage (HttpServletRequest request, Model model, int page,
+    @RequestMapping("/list")
+    public @ResponseBody
+            Page getUserInfoByPage (HttpServletRequest request, Model model, int page,
                         HttpServletResponse response) {
 
        // List<User> userList = userService.getUserInfoByPage1(page);
@@ -79,11 +80,14 @@ public class UserController {
         //logger.info(userList);
         //ResponseUtil.setResponse(response,userInfo);
         //model.addAttribute("userList", userList);
-        String userInfo = userService.getUserInfoByPage(page);
 
-        logger.info(userInfo);
-        ResponseUtil.setResponse(response,userInfo);
-        //return "user_list";
+        Page p1 = new Page();
+        p1.setPageNum(page);
+
+       Page p =  userService.queryUserList(p1);
+
+       logger.info(p.getPageCount());
+        return  p;
     }
 
     /**
@@ -110,23 +114,5 @@ public class UserController {
         return "user_add";
     }
 
-    /**
-     *  加载部门,和权限下拉框
-     * @param request
-     * @param model
-     * @param response
-     * @return
-     */
-    @RequestMapping("/pageCount")
-    public  @ResponseBody
-    Page pageCount (HttpServletRequest request, Model model,
-                    HttpServletResponse response) {
-
-
-
-      //int count=userService.pageCount();
-        //model.addAttribute("pageCount",1);
-        return userService.pageCount();
-    }
 
 }

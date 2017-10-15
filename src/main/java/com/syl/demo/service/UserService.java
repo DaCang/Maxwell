@@ -1,5 +1,6 @@
 package com.syl.demo.service;
 
+import com.syl.demo.controller.UserController;
 import com.syl.demo.dao.DeptDao;
 import com.syl.demo.dao.RoleDao;
 import com.syl.demo.dao.UserDao;
@@ -7,6 +8,7 @@ import com.syl.demo.pojo.Dept;
 import com.syl.demo.pojo.Page;
 import com.syl.demo.pojo.Role;
 import com.syl.demo.pojo.User;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,7 @@ import java.util.List;
 @Service
 public class UserService extends  CommonService {
 
+    protected Logger logger = Logger.getLogger(UserService.class);
 
     @Autowired
     UserDao userDao;
@@ -113,6 +116,27 @@ public class UserService extends  CommonService {
     }
 
     public static void main (String[] args) {
-        System.out.println(6%5);
+       /*Page page = new Page();
+       page.setCount(9);
+       System.out.println(page.getPageCount());*/
+       int a = 6,b=5;
+        System.out.println((a-1)/b);
     }
+
+    public Page<User> queryUserList(Page page){
+        List userList;
+        int aPagSize=5;
+        int start=0;
+        int end=0;
+        start=(page.getPageNum()-1)*aPagSize;
+        end=aPagSize;
+
+        userList = userDao.getUserInfoByPage(start,end);//根据user_id查询用户信息
+        page.setList(userList);
+        Page p =userDao.pageCount();
+        page.setCount(p.getCount());
+
+        return page;
+    }
+
 }
