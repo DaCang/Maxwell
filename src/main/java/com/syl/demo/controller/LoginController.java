@@ -45,17 +45,8 @@ public class LoginController {
         }else{
             String msg = user.getUserId()+" is not  exist!!";
             logger.info(msg);
-            //response.setStatus(550);
-            request.setAttribute("msg",
-                    msg);
-
-            try {
-                request.getRequestDispatcher("/error/userNotExist.jsp").forward(request, response);
-            } catch (ServletException e) {
-                e.printStackTrace();
-            }
-            return "";
-            // response.sendRedirect("/error/userNotExist.jsp");
+            model.addAttribute("msg", msg);
+            return "userNotExist";
 
         }
     }

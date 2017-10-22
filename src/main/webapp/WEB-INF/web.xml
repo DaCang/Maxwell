@@ -9,13 +9,13 @@
     <display-name>MaxWell</display-name>
     <context-param>
         <param-name>log4jConfigLocation</param-name>
-        <param-value>classpath:log4j.properties</param-value>
+        <param-value>classpath:config/log4j.properties</param-value>
     </context-param>
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
 
-        <param-value>classpath:bean*.xml</param-value>
+        <param-value>classpath:config/bean*.xml</param-value>
     </context-param>
 
     <!--Spring log4j Config loader-->
@@ -37,7 +37,7 @@
         <init-param>
             <param-name>contextConfigLocation</param-name>
             <!-- <param-value>classpath*:config/springAnnotation-core.xml</param-value> -->
-            <param-value>classpath*:spring-mvc-config.xml</param-value>
+            <param-value>classpath*:config/spring-mvc-config.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>

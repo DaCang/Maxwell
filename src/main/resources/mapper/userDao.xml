@@ -54,7 +54,7 @@
     </insert>
 
     <!--删除用户-->
-    <delete id="deleteUser" parameterType="user" >
+    <delete id="delete" parameterType="user" >
 
         DELETE FROM  user where user_id=#{userId}
     </delete>

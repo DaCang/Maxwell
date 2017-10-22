@@ -19,8 +19,6 @@ public interface UserDao extends  BaseDao {
 
     int createUser(User user);
 
-    int deleteUser(User user);
-
     List<User> getUserInfoByPage(@Param("start") int start,@Param("row_count") int row_count );
 
 

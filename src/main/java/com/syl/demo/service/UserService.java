@@ -58,7 +58,7 @@ public class UserService extends  CommonService {
         //userDaoImp = new UserDaoImp();//测试的时候打开
         User user = new User();
         user.setUserId(user_id);
-        int res =userDao.deleteUser(user);
+        int res =userDao.delete(user);
         if(res>0){
             System.out.println("删除成功！"+res+"行受影响！");
             return true;

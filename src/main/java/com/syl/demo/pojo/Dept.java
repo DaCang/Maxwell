@@ -32,6 +32,10 @@ public class Dept {
     }
 
 
+    /**
+     * 增加toString()方法
+     * @return
+     */
     @Override
     public String toString () {
         return "Dept{" +

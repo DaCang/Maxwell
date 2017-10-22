@@ -13,7 +13,7 @@
     <!-- 引入配置文件 -->
     <bean id="propertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-            p:location="classpath:jdbc.properties"/>
+            p:location="classpath:config/jdbc.properties"/>
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
@@ -37,8 +37,8 @@
     <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"
           p:dataSource-ref="dataSource"
-          p:configLocation="classpath:mybatis-config.xml"
-          p:mapperLocations="classpath:com/syl/demo/dao/mapper/*.xml"/>
+          p:configLocation="classpath:config/mybatis-config.xml"
+          p:mapperLocations="classpath:mapper/*.xml"/>
 
 
     <!-- DAO接口所在包名，Spring会自动查找其下的类 -->

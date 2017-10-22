@@ -7,11 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%
-  String user_id = (String) request.getAttribute("user_id");
-  String role_id = (String) request.getAttribute("role_id");
 
-%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,13 +15,19 @@
   <title>Lz_CMS-后台管理中心</title>
   <link rel="stylesheet" href="/back/static/layui/css/layui.css">
   <%--<link rel="stylesheet" href="/back/static/css/global.css">--%>
+    <script src="/jquery/jquery.js"></script>
   <script type="text/javascript" src="/back/static/layui/layui.js"></script>
   <%--<script type="text/javascript" src="/back/static/js/user_add.js"></script>--%>
   <script>
-      var user_id ='<%=user_id%>';
-      var role_id ='<%=role_id%>';
-      user_id="admin";
-      role_id="system";
+      var role_select = $("#role_id")
+      var roleSelectHtml = "";//存储数据的变量
+      role_select.empty();//清空内容
+      roleSelectHtml += "<option value=''>请选择</option>";
+      <c:forEach items="${roleList}" var="list"  varStatus="count">
+            roleSelectHtml += "<option value='${list.roleId}'>${list.roleName}</option>";
+      </c:forEach>
+
+      role_select.html(roleSelectHtml);//显示处理后的数据
   </script>
 </head>
 <body>
@@ -79,7 +81,7 @@
                 </div>
 
 
-                <div class="layui-form-item">
+              <%--  <div class="layui-form-item">
                   <label class="layui-form-label">所在部门</label>
                     <select id="dept_id" name="dept_id" >
 
@@ -90,22 +92,25 @@
                         </c:forEach>
                     </select>
                   <div class="layui-form-mid layui-word-aux"></div>
-                </div>
+                </div>--%>
 
                 <div class="layui-form-item">
                   <label class="layui-form-label">权限设置</label>
                   <div class="layui-input-inline input-custom-width">
                     <select  id="role_id" name="role_id" lay-verify="">
-                        <c:forEach items="${roleList}" var="list"  varStatus="count">
-                            <option value="${list.roleId}" >
-                                ${list.roleName}
-                            </option>
-                        </c:forEach>
+
                     </select>
                   </div>
                   <div class="layui-form-mid layui-word-aux"></div>
                 </div>
 
+                  <div class="layui-form-item">
+                      <label class="layui-form-label">上级栏目</label>
+                      <div class="layui-input-inline input-custom-width">
+                          <select name="parent_id" lay-verify=""><option value="">请选择</option><option value="0" selected="">≡ 作为一级栏目 ≡</option><option value="1">学无止境</option><option value="8">├─杂谈</option><option value="9">├─PHP</option><option value="10">├─建站</option><option value="11">├─WEB前端</option><option value="2">分享无价</option><option value="13">├─源码分享</option><option value="14">├─jQuery特效</option><option value="3">日记</option><option value="4">关于</option><option value="5">├─关于老张</option><option value="6">├─关于LzCMS</option><option value="7">├─留言</option></select>
+                      </div>
+                      <div class="layui-form-mid layui-word-aux"></div>
+                  </div>
 
                 <%--<div class="layui-form-item">
                   <label class="layui-form-label">再次确认</label>
