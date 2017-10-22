@@ -15,7 +15,7 @@ public class UserServiceTest {
     @Test
     public void deleteUser () throws Exception {
         UserService userService = new UserService();
-        System.out.println(userService.deleteUser("sfs"));
+        System.out.println(userService.deleteUser(null));
     }
 
     @Test

@@ -47,10 +47,23 @@
 
 
     <!--创建用户-->
-    <insert id="createUser" parameterType="user" keyColumn="user_id" >
+    <insert id="insert" parameterType="user" keyColumn="user_id" >
 
-        INSERT INTO user (user_id,user_name,password,role_ids,status,dept_id)
-        VALUES(#{userId},#{userName},#{password},#{roleId},#{status},#{deptId})
+        INSERT INTO
+            user
+            (user_id,
+             user_name,
+             password,
+             role_ids,
+             status,
+             dept_id)
+        VALUES(
+            #{userId},
+            #{userName},
+            #{password},
+            #{roleId},
+            #{status},
+            #{deptId})
     </insert>
 
     <!--删除用户-->

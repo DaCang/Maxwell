@@ -23,10 +23,37 @@
     <script type="text/javascript" src="/back/static/layui/layui.js"></script>
     <script type="text/javascript" src="/back/static/js/user.js"></script>
     <script>
-        var user_id ='<%=user_id%>';
-        var role_id ='<%=role_id%>';
-        //user_id="admin";
-        //role_id="system";
+        /*
+* 获取用户信息
+* */
+        function setData(data,page) {
+            // alert(data);
+            var userInfoHtml = "";
+            var userInfo = $("#userInfo")
+
+            //var list = eval("["+data+"]");
+            var  list=data.list;
+            //alert(list.length)
+            for(var i=0;i<list.length;i++){
+                //alert(list[i].userId)
+              userInfoHtml = userInfoHtml+
+                    "<tr>" +
+                    "<td>"+(i+1+(page-1)*5)+"</td>" +
+                    "<td>"+list[i].userId+"</td>" +
+                    "<td>"+list[i].userName+"</td>" +
+                    "<td>"+list[i].password+"</td>" +
+                    "<td>"+getRoleName(list[i].roleId)+"</td>" +
+                    "<td>"+list[i].deptId+"</td>" +
+                    " <td style=\"text-align: center;\">\n" +
+                    " <a href=\"./category_add.html\" class=\"layui-btn layui-btn-small\" title=\"编辑\"><i class=\"layui-icon\"></i></a>\n" +
+                    " <a  class=\"del_btn layui-btn layui-btn-small layui-btn-danger \"  onclick='del(this)' user-id=\""+list[i].userId+"\" title=\"删除\" user-name=\""+list[i].userName+"\"><i class=\"layui-icon\"></i></a>\n" +
+                    "  </td>" +
+                    "</tr>";
+            }
+            console.log(userInfoHtml)
+            userInfo.html(userInfoHtml);//显示处理后的数据
+        }
+
     </script>
 </head>
 <body>

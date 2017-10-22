@@ -106,7 +106,7 @@ public class UserAction extends HttpServlet {
             }
         }else if ("del".equals(method)) {
 
-            if (userService.deleteUser(user_id)) {
+            if (userService.deleteUser(null)) {
                 resultStr = user_id + " 删除成功！";
                 logger.info("----------------------------------->" + resultStr +
                           "<-----------------------------------");

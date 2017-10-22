@@ -6,12 +6,14 @@ import java.util.List;
 
 public interface   BaseDao<T> {
 
-    public  abstract List<T>  findList(T t);
+    List<T>  findList(T t);
 
-    public  abstract List<T>  findAllList();
+    List<T>  findAllList();
 
-    public Page pageCount();
+    Page pageCount();
 
 
-    public  abstract int  delete(T t);
+    int  delete(T t);
+
+    int insert(T t);
 }

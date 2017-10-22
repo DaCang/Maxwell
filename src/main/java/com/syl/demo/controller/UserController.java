@@ -29,12 +29,13 @@ public class UserController {
 
     @RequestMapping("/del")
     public @ResponseBody
-    void del(HttpServletRequest request, Model model, String user_id,
+    void del(HttpServletRequest request, Model model, User user,
                HttpServletResponse response) {
 
+        String user_id=user.getUserId();
 
         String resultStr;
-        if (userService.deleteUser(user_id)) {
+        if (userService.deleteUser(user)) {
             resultStr = user_id + " 删除成功！";
             logger.info("----------------------------------->" + resultStr +
                     "<-----------------------------------");
@@ -79,7 +80,7 @@ public class UserController {
 
         //logger.info(userList);
         //ResponseUtil.setResponse(response,userInfo);
-        //model.addAttribute("userList", userList);
+
 
         Page p1 = new Page();
         p1.setPageNum(page);
@@ -87,6 +88,7 @@ public class UserController {
        Page p =  userService.queryUserList(p1);
 
        logger.info(p.getPageCount());
+        model.addAttribute("page", p);
         return  p;
     }
 

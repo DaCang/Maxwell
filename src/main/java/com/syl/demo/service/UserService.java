@@ -47,20 +47,18 @@ public class UserService extends  CommonService {
 
     public boolean createUser (User user) {
        // userDaoImp = new UserDaoImp();//测试的时候打开
-        int res =userDao.createUser(user);
+        int res =userDao.insert(user);
         if(res>0){
-            System.out.println("插入成功！"+res+"行受影响！");
+            logger.info("插入成功！"+res+"行受影响！");
             return true;
         }
         return false;
     }
-    public boolean deleteUser (String user_id) {
+    public boolean deleteUser (User  user) {
         //userDaoImp = new UserDaoImp();//测试的时候打开
-        User user = new User();
-        user.setUserId(user_id);
         int res =userDao.delete(user);
         if(res>0){
-            System.out.println("删除成功！"+res+"行受影响！");
+            logger.info("删除成功！"+res+"行受影响！");
             return true;
         }
         return false;
