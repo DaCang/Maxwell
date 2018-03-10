@@ -16,8 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * @author syl
+ */
 @Controller
-
 public class LoginController {
 
     private static final long serialVersionUID = 1L;
@@ -27,28 +29,26 @@ public class LoginController {
     @Autowired
     LoginService loginService ;
 
-
+ /**
+   * 用户登陆
+   * @Title:login
+   * @Description: （用户登陆）
+   * @param user
+   * @return
+   * @author 宋永利
+   * @date 2018/3/10
+   * @throws
+  */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String   login(HttpServletRequest request, Model model,
-               User user,
-               HttpServletResponse response)
-    throws IOException{
-
-        logger.info(user.getUserId());
-        logger.info(user.getPassword());
+    public String   login(HttpServletRequest request, Model model, User user, HttpServletResponse response){
+        String msg =user.getUserId();
+        logger.info("user login..."+user.toString());
         User u =loginService.findUser(user);
-        if(u!=null){
-            logger.info(u.getUserId()+" is exist!!");
-            model.addAttribute("user", u);
-            return "index";
-
-        }else{
-            String msg = user.getUserId()+" is not  exist!!";
-            logger.info(msg);
-            model.addAttribute("msg", msg);
-            return "userNotExist";
-
-        }
+        msg += (u!=null)?" is exist!!":" is not  exist!!";
+        model.addAttribute("user", u);
+        model.addAttribute("msg", msg);
+        logger.info(msg);
+        return (u!=null)?"index":"userNotExist";
     }
 
 }
