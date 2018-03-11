@@ -13,16 +13,6 @@
         dept_id as deptId
     </sql>
 
-    <!-- 获得用户信息-->
-    <select id="findUser"  parameterType="user" resultType="user" >
-        SELECT
-        <include refid="Base_Column_List" />
-        FROM user
-        <where>
-            status = '0'
-            AND user_id=#{userId}
-            AND password=#{password}
-        </where>
-    </select>
+
 
 </mapper>
